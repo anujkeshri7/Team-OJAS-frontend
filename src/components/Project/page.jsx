@@ -25,6 +25,48 @@ const projects = [
     image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
   },
   {
+    id: 2,
+    title: "EV Charging Station",
+    domain: "Electric Vehicles",
+    description:
+      "Fast DC charging station design with 350kW capacity and intelligent load management.",
+    tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
+    icon: <Cpu size={28} />,
+    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
+  },
+  {
+    id: 2,
+    title: "EV Charging Station",
+    domain: "Electric Vehicles",
+    description:
+      "Fast DC charging station design with 350kW capacity and intelligent load management.",
+    tech: ["MATLAB", "Power Converters", "CAN Bus", ],
+    icon: <Cpu size={28} />,
+    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
+  },
+  {
+    id: 2,
+    title: "EV Charging Station",
+    domain: "Electric Vehicles",
+    description:
+      "Fast DC charging station design with 350kW capacity and intelligent load management.",
+    tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
+    icon: <Cpu size={28} />,
+    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
+  },
+  
+  {
+    id: 2,
+    title: "EV Charging Station",
+    domain: "Electric Vehicles",
+    description:
+      "Fast DC charging station design with 350kW capacity and intelligent load management.",
+    tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
+    icon: <Cpu size={28} />,
+    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
+  },
+  
+  {
     id: 3,
     title: "Smart Home Automation",
     domain: "IoT & Automation",
