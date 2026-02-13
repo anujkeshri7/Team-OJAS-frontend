@@ -1,84 +1,79 @@
-
 import Card from "./Card";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 /* ======================
    Dummy Backend Response
    ====================== */
-const teamMembers = [
-  {
-    name: "Dr. R. K. Sharma",
-    position: "Faculty Coordinator",
-    description: "Guiding the club with academic expertise and mentorship.",
-    profilePic: "https://i.pravatar.cc/300?img=12",
-    linkedin: "#",
-  },
-  {
-    name: "Aman Sharma",
-    position: "President",
-    description: "Leads the club and oversees all activities.",
-    profilePic: "https://i.pravatar.cc/300?img=32",
-    instagram: "#",
-    linkedin: "#",
-    github: "#",
-  },
-  {
-    name: "Neha Verma",
-    position: "Vice President",
-    description: "Manages coordination and club operations.",
-    profilePic: "https://i.pravatar.cc/300?img=45",
-    linkedin: "#",
-  },
-  {
-    name: "Rohit Mehta",
-    position: "Technical Lead",
-    description: "Heads technical projects and workshops.",
-    profilePic: "https://i.pravatar.cc/300?img=18",
-    github: "#",
-    linkedin: "#",
-  },
-  {
-    name: "Anjali Singh",
-    position: "Volunteer",
-    description: "Works on embedded systems and IoT projects.",
-    profilePic: "https://i.pravatar.cc/300?img=5",
-    instagram: "#",
-  },
-  {
-    name: "Kunal Gupta",
-    position: "Volunteer",
-    description: "Assists in power systems related activities.",
-    profilePic: "https://i.pravatar.cc/300?img=22",
-  },
-];
+
+
+
 
 /* ======================
    Position → Section Map
    ====================== */
-const positionGroups = {
-  "Faculty Coordinator": "Faculty Coordinator",
-  "President": "Core Team",
-  "Vice President": "Core Team",
-  "Technical Lead": "Core Team",
-  "Event Coordinator": "Core Team",
+const positionToSection = {
+  "Club Coordinator": "Club Coordinator",
+
+  "Executives": "Executives",
+  
+
   "Volunteer": "Volunteers",
 };
 
+/* ======================
+   Section Order
+   ====================== */
+const SECTION_ORDER = [
+  "Club Coordinator",
+  "Executives",
+  "Volunteers",
+];
+
+
+
 export default function Team() {
+
+    const [teamMembers, setTeamMembers] = useState([]);
+
+
+    useEffect(() => {
+
+        const fetchTeam = async () => {
+            try {
+                console.log("Fetching team members from backend URL:", import.meta.env.BACKEND_URL);
+                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/get-members`);
+                console.log("Fetched team members:", res.data.members);
+                setTeamMembers(res.data.members);
+
+                
+            } catch (error) {
+                console.log("Error fetching team members:", error);
+                
+            }
+        }
+        fetchTeam();
+    }
+    , [])
+
   /* ======================
-     Group by Section
+     Group by section
      ====================== */
   const groupedTeam = teamMembers.reduce((acc, member) => {
-    const section = positionGroups[member.position] || "Members";
+    const section =
+      positionToSection[member.position] || "Volunteers";
+
     if (!acc[section]) acc[section] = [];
     acc[section].push(member);
+
     return acc;
   }, {});
 
   return (
-    <section className="min-h-screen bg-[#0B0F1A] py-24">
+    <section className="min-h-screen bg-[#0B0F1A] py-28">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Page Header */}
+        {/* Header */}
         <div className="text-center mb-24">
           <h1 className="text-4xl md:text-5xl font-bold text-white">
             Our <span className="text-cyan-400">Team</span>
@@ -88,27 +83,50 @@ export default function Team() {
           </p>
         </div>
 
-        {/* Render Sections */}
-        {Object.entries(groupedTeam).map(([section, members]) => (
-          <div key={section} className="mb-24">
+        {/* Sections */}
+        {SECTION_ORDER.map((section) => {
+          const members = groupedTeam[section];
+          if (!members || members.length === 0) return null;
 
-            <h2 className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-12">
-              {section}
-            </h2>
+          return (
+            <div key={section} className="mb-28">
+              <h2 className="text-2xl md:text-3xl font-semibold
+              text-cyan-400 mb-12">
+                {section}
+              </h2>
 
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-              {members.map((m, idx) => (
-
-                <Card key={idx} m={m} idx={idx} /> 
-
-
-              ))}
-
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+                {members.map((member, idx) => (
+                  <div
+                    key={member.name}
+                    className="opacity-0 animate-fadeUp"
+                    style={{ animationDelay: `${idx * 120}ms` }}
+                  >
+                    <Card m={member} />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-
+          );
+        })}
       </div>
+
+      {/* Animation */}
+      <style>{`
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeUp {
+          animation: fadeUp 0.6s ease forwards;
+        }
+      `}</style>
     </section>
   );
 }
