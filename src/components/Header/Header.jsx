@@ -73,16 +73,16 @@ export default function Header() {
       {open && (
         <div className="md:hidden bg-[#0B0F1A] border-t border-cyan-500/20">
           <nav className="flex flex-col px-6 py-4 gap-4 text-gray-300">
-            {["Home", "About", "Events", "Projects", "Resources", "Contact"].map(
+            {menuItems.map(
               (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                <Link
+                  key={item.name}
+                  to={item.link}
                   className="hover:text-cyan-400 transition"
                   onClick={() => setOpen(false)}
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </Link>
               )
             )}
           </nav>
