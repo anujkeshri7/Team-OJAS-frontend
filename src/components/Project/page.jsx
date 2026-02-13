@@ -14,7 +14,7 @@ const projects = [
       "IoT-based smart energy meter for real-time power monitoring and billing with cloud integration.",
     tech: ["IoT", "ESP32", "Power Electronics", "REST API"],
     icon: <Zap size={28} />,
-    image: "https://res.cloudinary.com/drdivev7j/image/upload/v1771002765/3_lyfttr.jpg",
+    image: "",
   },
   {
     id: 2,
