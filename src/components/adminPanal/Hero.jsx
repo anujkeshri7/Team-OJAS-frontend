@@ -179,18 +179,5 @@ const AdminPanel = () => {
   );
 };
 
-/* ================= CONTENT SECTIONS ================= */
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default AdminPanel;

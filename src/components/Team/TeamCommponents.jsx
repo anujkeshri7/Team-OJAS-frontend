@@ -3,21 +3,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 /* ======================
-   Dummy Backend Response
-   ====================== */
-
-
-
-
-/* ======================
    Position → Section Map
    ====================== */
 const positionToSection = {
   "Club Coordinator": "Club Coordinator",
-
-  "Executives": "Executives",
-  
-
+  "Executive Member":"Executives",
   "Volunteer": "Volunteers",
 };
 
@@ -30,49 +20,34 @@ const SECTION_ORDER = [
   "Volunteers",
 ];
 
-
-
 export default function Team() {
+  const [teamMembers, setTeamMembers] = useState([]);
 
-    const [teamMembers, setTeamMembers] = useState([]);
-
-
-    useEffect(() => {
-
-        const fetchTeam = async () => {
-            try {
-                console.log("Fetching team members from backend URL:", import.meta.env.BACKEND_URL);
-                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/get-members`);
-                console.log("Fetched team members:", res.data.members);
-                setTeamMembers(res.data.members);
-
-                
-            } catch (error) {
-                console.log("Error fetching team members:", error);
-                
-            }
-        }
-        fetchTeam();
-    }
-    , [])
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/get-members`);
+        setTeamMembers(res.data.members);
+      } catch (error) {
+        console.error("Error fetching team members:", error);
+      }
+    };
+    fetchTeam();
+  }, []);
 
   /* ======================
      Group by section
      ====================== */
   const groupedTeam = teamMembers.reduce((acc, member) => {
-    const section =
-      positionToSection[member.position] || "Volunteers";
-
+    const section = positionToSection[member.position] || "Volunteers";
     if (!acc[section]) acc[section] = [];
     acc[section].push(member);
-
     return acc;
   }, {});
 
   return (
     <section className="min-h-screen bg-[#0B0F1A] py-28">
       <div className="max-w-7xl mx-auto px-6">
-
         {/* Header */}
         <div className="text-center mb-24">
           <h1 className="text-4xl md:text-5xl font-bold text-white">
@@ -83,15 +58,14 @@ export default function Team() {
           </p>
         </div>
 
-        {/* Sections */}
+        {/* Sections in fixed order */}
         {SECTION_ORDER.map((section) => {
           const members = groupedTeam[section];
           if (!members || members.length === 0) return null;
 
           return (
             <div key={section} className="mb-28">
-              <h2 className="text-2xl md:text-3xl font-semibold
-              text-cyan-400 mb-12">
+              <h2 className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-12">
                 {section}
               </h2>
 
@@ -114,14 +88,8 @@ export default function Team() {
       {/* Animation */}
       <style>{`
         @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .animate-fadeUp {
           animation: fadeUp 0.6s ease forwards;
