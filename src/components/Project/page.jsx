@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Cpu, Zap, Wifi, ArrowRight } from "lucide-react";
 import ProjectCard from "./ProjectCard";
+
+
 
 /* ===== Project Data with Images ===== */
 const projects = [
   {
     id: 1,
-    title: "Smart Energy Meter",
+    title: "gaass fukna",
     domain: "Power Systems",
     description:
       "IoT-based smart energy meter for real-time power monitoring and billing with cloud integration.",
     tech: ["IoT", "ESP32", "Power Electronics", "REST API"],
     icon: <Zap size={28} />,
-    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop",
+    image: "https://res.cloudinary.com/drdivev7j/image/upload/v1771002765/3_lyfttr.jpg",
   },
   {
     id: 2,
@@ -89,6 +91,11 @@ export default function Projects() {
     selectedDomain === "All"
       ? projects
       : projects.filter((p) => p.domain === selectedDomain);
+
+
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
 
   return (
     <section className="relative min-h-screen bg-[#0B0F1A] py-24 overflow-hidden">
