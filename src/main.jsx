@@ -23,9 +23,12 @@ const router = createBrowserRouter([
     {path:'/contact', element:<h1>Contact</h1>},
     {path:'/members', element:<TeamPage/>},  
     {path:'/projects', element:<Projects/>},
-    {path:'/add-members',element:<TeamMemberForm/>},
+    
 
-    {path:'/admin',element:(<AdminPage/>)}
+    {path:'/admin',element:(<AdminPage/>)},
+
+
+    {path:'/add-members',element:<TeamMemberForm/>}
     
     ]
 
