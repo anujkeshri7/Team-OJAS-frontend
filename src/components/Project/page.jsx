@@ -4,81 +4,7 @@ import ProjectCard from "./ProjectCard";
 
 
 
-/* ===== Project Data with Images ===== */
-const projects = [
-  {
-    id: 1,
-    title: "gaass fukna",
-    domain: "Power Systems",
-    description:
-      "IoT-based smart energy meter for real-time power monitoring and billing with cloud integration.",
-    tech: ["IoT", "ESP32", "Power Electronics", "REST API"],
-    icon: <Zap size={28} />,
-    image: "",
-  },
-  {
-    id: 2,
-    title: "EV Charging Station",
-    domain: "Electric Vehicles",
-    description:
-      "Fast DC charging station design with 350kW capacity and intelligent load management.",
-    tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
-    icon: <Cpu size={28} />,
-    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    title: "EV Charging Station",
-    domain: "Electric Vehicles",
-    description:
-      "Fast DC charging station design with 350kW capacity and intelligent load management.",
-    tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
-    icon: <Cpu size={28} />,
-    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    title: "EV Charging Station",
-    domain: "Electric Vehicles",
-    description:
-      "Fast DC charging station design with 350kW capacity and intelligent load management.",
-    tech: ["MATLAB", "Power Converters", "CAN Bus", ],
-    icon: <Cpu size={28} />,
-    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    title: "EV Charging Station",
-    domain: "Electric Vehicles",
-    description:
-      "Fast DC charging station design with 350kW capacity and intelligent load management.",
-    tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
-    icon: <Cpu size={28} />,
-    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
-  },
-  
-  {
-    id: 2,
-    title: "EV Charging Station",
-    domain: "Electric Vehicles",
-    description:
-      "Fast DC charging station design with 350kW capacity and intelligent load management.",
-    tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
-    icon: <Cpu size={28} />,
-    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
-  },
-  
-  {
-    id: 3,
-    title: "Smart Home Automation",
-    domain: "IoT & Automation",
-    description:
-      "Wireless home automation system with voice control and mobile app for lighting, security & HVAC.",
-    tech: ["IoT", "Sensors", "WiFi", "Mobile App", "Firebase"],
-    icon: <Wifi size={28} />,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-  },
-];
+
 
 /* ===== Project Card with Enhanced Design ===== */
 
@@ -86,6 +12,7 @@ const projects = [
 /* ===== Main Projects Page ===== */
 export default function Projects() {
   const [selectedDomain, setSelectedDomain] = useState("All");
+  const [projects, setProjects] = useState([]); 
   const domains = ["All", ...new Set(projects.map((p) => p.domain))];
   const filteredProjects =
     selectedDomain === "All"
@@ -96,6 +23,28 @@ export default function Projects() {
   useEffect(()=>{
     window.scrollTo(0, 0);
   },[])
+
+
+
+  useEffect(() => {
+      const fetchProjects = async () => {
+        try {
+          const res = await fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/api/get-projects`,
+          );
+          const data = await res.json();
+  
+          if (data?.projects) {
+            setProjects(data.projects);
+          }
+        } catch (error) {
+          console.error("Error fetching projects:", error);
+          setProjects([]);
+        }
+      };
+  
+      fetchProjects();
+    }, []);
 
   return (
     <section className="relative min-h-screen bg-[#0B0F1A] py-24 overflow-hidden">

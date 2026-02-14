@@ -18,6 +18,7 @@ import EventsContent from "./ui/EventContent";
 import ProjectsContent from "./ui/ProjectsContent";
 import GalleryContent from "./ui/GalleryContent";
 import AnnouncementsContent from "./ui/AnnouncementsContent";
+import TeamPage from "../../Pages/TeamPage";
 
 const AdminPanel = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -42,7 +43,7 @@ const AdminPanel = () => {
       members: {
         title: "Team Members",
         description: "Manage all team members",
-        content: <MembersContent />,
+        content: <TeamPage />,
       },
       events: {
         title: "Events",
@@ -83,7 +84,7 @@ const AdminPanel = () => {
           <div className="flex items-center justify-between">
             <div className={`${!sidebarOpen && "hidden"}`}>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Club
+                OJAS
               </h1>
               <p className="text-xs text-gray-400 mt-1">Admin Panel</p>
             </div>

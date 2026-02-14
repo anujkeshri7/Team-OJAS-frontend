@@ -42,7 +42,7 @@ export default function Header() {
         <div 
         onClick =  {()=>navigate('/')}
         className="text-xl font-bold text-cyan-400 cursor-pointer">
-          ⚡ Electrical Club
+          ⚡OJAS
         </div>
 
         {/* Desktop Menu */}
