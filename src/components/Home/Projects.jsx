@@ -1,43 +1,45 @@
 import React, { useState } from "react";
 import { ArrowRight, Zap, Code, Cpu, ExternalLink, GitBranch,Wifi } from "lucide-react";
 import ProjectCard from "../Project/ProjectCard";
+import { useNavigate } from "react-router-dom";
 
 const projects = [
   {
-    id: 1,
-    title: "Smart Energy Meter",
-    domain: "Power Systems",
-    description:
-      "IoT-based smart energy meter for real-time power monitoring and billing with cloud integration.",
-    tech: ["IoT", "ESP32", "Power Electronics", "REST API"],
-    icon: <Zap size={28} />,
-    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    title: "EV Charging Station",
-    domain: "Electric Vehicles",
-    description:
-      "Fast DC charging station design with 350kW capacity and intelligent load management.",
-    tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
-    icon: <Cpu size={28} />,
-    image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Smart Home Automation",
-    domain: "IoT & Automation",
-    description:
-      "Wireless home automation system with voice control and mobile app for lighting, security & HVAC.",
-    tech: ["IoT", "Sensors", "WiFi", "Mobile App", "Firebase"],
-    icon: <Wifi size={28} />,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-  },
+     id: 1,
+     title: "gaass fukna",
+     domain: "Power Systems",
+     description:
+       "IoT-based smart energy meter for real-time power monitoring and billing with cloud integration.",
+     tech: ["IoT", "ESP32", "Power Electronics", "REST API"],
+     icon: <Zap size={28} />,
+     image: "https://res.cloudinary.com/drdivev7j/image/upload/v1771002765/3_lyfttr.jpg",
+   },
+   {
+     id: 2,
+     title: "EV Charging Station",
+     domain: "Electric Vehicles",
+     description:
+       "Fast DC charging station design with 350kW capacity and intelligent load management.",
+     tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
+     icon: <Cpu size={28} />,
+     image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
+   },
+   {
+     id: 2,
+     title: "EV Charging Station",
+     domain: "Electric Vehicles",
+     description:
+       "Fast DC charging station design with 350kW capacity and intelligent load management.",
+     tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
+     icon: <Cpu size={28} />,
+     image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
+   },
 ];
 
 
 
 export default function FeaturedProjects() {
+  const navigate = useNavigate();
   return (
     <section className="relative bg-[#0B0F1A] py-24 overflow-hidden">
       {/* Animated Background */}
@@ -84,7 +86,9 @@ export default function FeaturedProjects() {
           className="mt-16 text-center opacity-0"
           style={{ animation: "slideUpFade 0.8s ease-out 1s forwards" }}
         >
-          <button className="px-10 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_rgba(34,211,238,0.7)]">
+          <button 
+          onClick={()=>navigate('/projects')}
+          className="px-10 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_rgba(34,211,238,0.7)]">
             View All Projects
           </button>
         </div>

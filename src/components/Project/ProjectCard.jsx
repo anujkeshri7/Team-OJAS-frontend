@@ -3,8 +3,11 @@ import { Cpu, Zap, Wifi, ArrowRight } from "lucide-react";
 
 import {useState} from 'react'
 
+import { useNavigate } from 'react-router-dom';
+
 function ProjectCard({ project, index }) {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div
@@ -21,29 +24,17 @@ function ProjectCard({ project, index }) {
         {/* Image Section */}
         <div className="relative h-48 overflow-hidden bg-black/30">
           <img
-            src={project.image}
+            src={project.image.url}
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-500"
             style={{
-              transform: isHovered ? "scale(1.1) rotate(1deg)" : "scale(1)",
+              transform: isHovered ? "scale(1.01)" : "scale(1)",
             }}
           />
           
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 to-transparent" />
           
-          {/* Icon Badge */}
-          <div
-            className="absolute top-4 right-4 w-14 h-14 rounded-xl 
-            bg-cyan-400/10 backdrop-blur-md border border-cyan-400/30
-            text-cyan-400 flex items-center justify-center
-            transition-all duration-300"
-            style={{
-              transform: isHovered ? "translateY(-8px) scale(1.1)" : "translateY(0)",
-            }}
-          >
-            {project.icon}
-          </div>
         </div>
 
         {/* Content Section */}
@@ -64,7 +55,7 @@ function ProjectCard({ project, index }) {
 
           {/* Description */}
           <p className="text-sm text-gray-400 leading-relaxed mb-4 flex-1 line-clamp-3">
-            {project.description}
+            {project.shortDescription}
           </p>
 
           {/* Tech Stack */}
@@ -91,6 +82,7 @@ function ProjectCard({ project, index }) {
 
           {/* CTA Button */}
           <button
+            onClick={() => navigate(`/projects/${project._id}`)}
             className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg
             bg-white/5 text-cyan-400 hover:bg-cyan-400/20
             border border-cyan-500/30 hover:border-cyan-400/50

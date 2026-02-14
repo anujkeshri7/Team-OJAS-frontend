@@ -12,7 +12,7 @@ function Card({ m }) {
       {/* Image / Placeholder */}
       <div className="h-44 bg-[#2A3A4E] relative">
         <img
-          src={m.profilePic}
+          src={m.profilePic?.url}
           alt={m.name}
           className="w-full h-full object-cover"
         />
