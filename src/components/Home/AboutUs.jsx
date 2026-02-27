@@ -139,15 +139,7 @@ export default function AboutClub() {
               </div>
             </div>
 
-            {/* CTA Button */}
-            <div 
-              className="opacity-0"
-              style={{ animation: "slideUpFade 0.8s ease-out 0.8s forwards" }}
-            >
-              <button className="px-8 py-4 rounded-lg bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition-all duration-300 shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:shadow-[0_0_35px_rgba(34,211,238,0.6)]">
-                Join OJAS Today
-              </button>
-            </div>
+           
           </div>
 
           {/* Right Section - Stats Cards */}
