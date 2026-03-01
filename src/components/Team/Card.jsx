@@ -119,7 +119,8 @@ function Card({ setConfirmOpen, setM, m, isAdminView }) {
 
             <a 
             href={m.linkedin}
-            target="_blank"
+            target={"_blank"}
+            
             rel="noopener noreferrer"
             className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
               flex items-center justify-center text-gray-300 hover:text-cyan-400">
@@ -129,6 +130,7 @@ function Card({ setConfirmOpen, setM, m, isAdminView }) {
           {m.github && (
             <a 
             href={m.github} 
+            target={"_blank"}
             className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
               flex items-center justify-center text-gray-300 hover:text-cyan-400">
               <Github size={14} />
@@ -137,6 +139,7 @@ function Card({ setConfirmOpen, setM, m, isAdminView }) {
           {m.instagram && (
             <a 
             href={m.instagram}
+            target={"_blank"}
             className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
               flex items-center justify-center text-gray-300 hover:text-cyan-400">
               <Instagram size={14} />

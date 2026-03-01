@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ArrowRight, Zap } from "lucide-react";
+import Background from "../hero-section/Background";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [trail, setTrail] = useState([]);
   const trailTimeoutRef = React.useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let frameId;
@@ -16,7 +19,7 @@ export default function Hero() {
       if (trailTimeoutRef.current) {
         clearTimeout(trailTimeoutRef.current);
       }
-      
+
       // Set new timeout to clear trail after 500ms of no movement
       trailTimeoutRef.current = setTimeout(() => {
         setTrail([]);
@@ -26,7 +29,7 @@ export default function Hero() {
     const handleMouseMove = (e) => {
       const x = e.clientX;
       const y = e.clientY;
-      
+
       setMousePosition({ x, y });
 
       // Only add to trail if cursor moved enough (to avoid too many dots)
@@ -42,7 +45,7 @@ export default function Hero() {
         });
         lastX = x;
         lastY = y;
-        
+
         // Reset the clear trail timeout
         clearTrailWithDelay();
       }
@@ -59,23 +62,29 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#0B0F1A] overflow-hidden">
-      
+
       {/* Animated Background Glows */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Primary Glow */}
-        <div 
-          className="absolute w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl"
+        <div
+          className="absolute rounded-full blur-3xl"
           style={{
+            width: "500px",
+            height: "500px",
+            backgroundColor: "rgba(6, 182, 212, 0.2)",
             top: "10%",
             left: "10%",
             animation: "floatGlow 8s ease-in-out infinite",
           }}
         />
-        
+
         {/* Secondary Glow */}
-        <div 
-          className="absolute w-[500px] h-[500px] bg-blue-500/15 rounded-full blur-3xl"
+        <div
+          className="absolute rounded-full blur-3xl"
           style={{
+            width: "500px",
+            height: "500px",
+            backgroundColor: "rgba(59, 130, 246, 0.15)",
             top: "40%",
             right: "5%",
             animation: "floatGlow 10s ease-in-out infinite 2s",
@@ -83,9 +92,12 @@ export default function Hero() {
         />
 
         {/* Tertiary Glow */}
-        <div 
-          className="absolute w-[400px] h-[400px] bg-cyan-400/10 rounded-full blur-3xl"
+        <div
+          className="absolute rounded-full blur-3xl"
           style={{
+            width: "400px",
+            height: "400px",
+            backgroundColor: "rgba(34, 211, 238, 0.1)",
             bottom: "10%",
             left: "50%",
             animation: "floatGlow 12s ease-in-out infinite 4s",
@@ -94,7 +106,7 @@ export default function Hero() {
       </div>
 
       {/* Animated Grid Pattern */}
-      <div 
+      <div
         className="absolute inset-0 opacity-30"
         style={{
           backgroundImage: `linear-gradient(to right, rgba(34,211,238,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(34,211,238,0.05) 1px, transparent 1px)`,
@@ -144,98 +156,108 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl px-6 text-center">
-        
+
         {/* Top Badge */}
-        <div 
-          className="inline-block mb-8 opacity-0"
+        <div
+          className="inline-block mb-10 opacity-0"
           style={{ animation: "slideUpFade 0.8s ease-out 0.2s forwards" }}
         >
           <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-sm">
             <Zap size={16} className="text-cyan-400" />
             <span className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">
-              Innovation Hub
+              Departmental Club of Electrical Engineering
             </span>
           </div>
         </div>
 
         {/* Main Heading - OJAS */}
-        <div className="relative mb-6">
+        <div className="relative mt-0 mb-8">
           {/* Animated Background for Title */}
-          <div 
+          <div
             className="absolute inset-0 -z-10"
             style={{
-              background: "linear-gradient(135deg, rgba(34,211,238,0.2) 0%, rgba(34,211,238,0.05) 100%)",
-              borderRadius: "20px",
-              filter: "blur(20px)",
+              // background: "linear-gradient(135deg, rgba(34,211,238,0.2) 0%, rgba(34,211,238,0.05) 100%)",
+              // borderRadius: "20px",
+              // filter: "blur(20px)",
+              // opacity: 0.05,
               animation: "pulse 4s ease-in-out infinite",
             }}
           />
 
-          <h1 
+          <h1
             className="text-7xl md:text-8xl font-black text-white leading-tight tracking-tighter opacity-0"
             style={{ animation: "slideUpFade 1s ease-out 0.4s forwards" }}
           >
             TEAM OJAS
           </h1>
-
-          {/* Gradient Text Effect */}
-          <div 
-            className="mt-2 text-2xl md:text-4xl font-bold opacity-0"
-            style={{ animation: "slideUpFade 1s ease-out 0.6s forwards" }}
+          {/* Tagline */}
+          <div
+            className="mt-5 mb-6 opacity-0"
+            style={{ animation: "slideUpFade 1s ease-out 0.8s forwards" }}
           >
-            <span className="text-gray-300">Electrical Engineering </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-400">
-              Club
+            <p className="text-xl md:text-2xl text-gray-300 font-light tracking-wide">
+              <span className="text-cyan-400 font-semibold">Fuelled by {" "} 
+                
+                <span className=" text-xl md:text-2xl text-cyan-400 ">
+                Innovation{" "}
             </span>
+                , Driven by Determination</span> •
+
+            </p>
+
+            {/* Animated Underline */}
+
+            <div
+              className="mt-4 h-1 bg-linear-to-r from-transparent via-cyan-400 to-transparent rounded-full"
+              style={{
+                animation: "expandWidth 1.2s ease-out 1s forwards",
+                width: "0%",
+                margin: "0 auto",
+              }}
+            />
+          </div>
+          {/* Gradient description Text Effect */}
+
+          <div
+            className="mt-4 text-sm md:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto opacity-0"
+            style={{ animation: "slideUpFade 1s ease-out 0.6s forwards " }}
+          >
+            Empowering students of,{" "}
+            <span className=" text-sm md:text-lg text-cyan-400 ">
+              NIT Hamirpur
+            </span>{" "}
+            to build intelligent systems through innovation, mentorship, and hands-on learning.
           </div>
         </div>
 
-        {/* Tagline */}
-        <div 
-          className="mt-8 opacity-0"
-          style={{ animation: "slideUpFade 1s ease-out 0.8s forwards" }}
-        >
-          <p className="text-xl md:text-2xl text-gray-300 font-light tracking-wide">
-            <span className="text-cyan-400 font-semibold">Fuelled by Innovation, Driven by Determination</span> • 
-        
-          </p>
 
-          {/* Animated Underline */}
-          <div 
-            className="mt-4 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full"
-            style={{
-              animation: "expandWidth 1.2s ease-out 1s forwards",
-              width: "0%",
-              margin: "0 auto",
-            }}
-          />
-        </div>
 
         {/* Buttons */}
-        <div 
+        <div
           className="mt-12 flex flex-col sm:flex-row gap-4 justify-center opacity-0"
           style={{ animation: "slideUpFade 1s ease-out 1.2s forwards" }}
         >
           {/* Primary Button */}
-          {/* <button
+          <button
+          onClick={()=>navigate('/projects')}
             className="group relative px-10 py-4 rounded-xl bg-cyan-500 text-black font-bold 
             text-lg hover:bg-cyan-400 transition-all duration-300
             shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_rgba(34,211,238,0.8)]
             overflow-hidden"
           >
-            
-            <div 
+
+            <div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500"
               style={{
                 animation: "shimmer 3s infinite",
               }}
             />
-            
+
             <span className="relative flex items-center gap-2">
-              Join the Club
+              Explore Projects
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </span>
-          </button> */}
+          </button>
 
           {/* Secondary Button */}
           {/* <button
@@ -249,8 +271,8 @@ export default function Hero() {
         </div>
 
         {/* Stats Row */}
-        <div 
-          className="mt-0 grid grid-cols-3 gap-8 opacity-0 max-w-2xl mx-auto"
+        <div
+          className="mt-10 grid grid-cols-3 gap-8 opacity-0 max-w-2xl mx-auto"
           style={{ animation: "slideUpFade 1s ease-out 1.4s forwards" }}
         >
           <div className="group">
@@ -277,7 +299,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div 
+      <div
         className="absolute bottom-8 text-gray-400 text-sm"
         style={{
           animation: "bounceScroll 2s ease-in-out infinite",
@@ -361,6 +383,9 @@ export default function Hero() {
           scroll-behavior: smooth;
         }
       `}</style>
+
     </section>
+
+
   );
 }

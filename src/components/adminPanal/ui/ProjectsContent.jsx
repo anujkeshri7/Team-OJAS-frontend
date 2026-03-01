@@ -62,7 +62,7 @@ const ProjectsContent = () => {
                 Our <span className="text-cyan-400">Projects</span>
               </h2>
               <p className="text-gray-400">
-                Real-world projects built by our electrical engineering club
+                Real-world projects built by Team OJAS
               </p>
             </div>
 

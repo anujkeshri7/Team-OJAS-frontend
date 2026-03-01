@@ -17,10 +17,7 @@ export default function Header() {
         name: "About",
         link: "/about"
     },
-    {
-        name: "Events",
-        link: "/events"
-    },
+
     {  
         name: "Projects",
         link: "/projects"

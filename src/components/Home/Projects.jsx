@@ -10,8 +10,8 @@ import axios from "axios";
 
 
 export default function FeaturedProjects() {
-  
-const [projects, setProjects] = useState([]);
+
+  const [projects, setProjects] = useState([]);
 
 useEffect(() => {
       const fetchProjects = async () => {
@@ -22,7 +22,7 @@ useEffect(() => {
           const data = await res.json();
   
           if (data?.projects) {
-            setProjects(data.projects.slice(0, 3)); // Get only the first 3 projects
+            setProjects(data.projects.slice(0, 3)); // Get only the first 3 projects for featured section
           }
         } catch (error) {
           console.error("Error fetching projects:", error);
@@ -82,7 +82,7 @@ useEffect(() => {
         >
           <button 
           onClick={()=>navigate('/projects')}
-          className="px-10 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_rgba(34,211,238,0.7)]">
+          className="px-10 py-4 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.5)] hover:shadow-[0_0_20px_rgba(34,211,238,0.7)]">
             View All Projects
           </button>
         </div>

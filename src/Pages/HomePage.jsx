@@ -6,6 +6,8 @@ import FeaturedProjects from '../components/Home/Projects'
 import WhyJoinUs from '../components/Home/WhyJoinUs'
 import TeamPreview from '../components/Home/Team'
 import FinalCTA from '../components/Home/CTA'
+import ContactUs from '../components/Home/ContactUs'
+
 
 function HomePage() {
 
@@ -18,9 +20,11 @@ function HomePage() {
         <AboutClub/>
         <Domains/>
         <FeaturedProjects/>
-        <WhyJoinUs/>
+
+        {/* <WhyJoinUs/>
         <FinalCTA/>
-      
+       */}
+       <ContactUs/>
     </div>
   )
 }

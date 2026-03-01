@@ -16,6 +16,7 @@ import Protected from "./Protected.jsx";
 import ProjectDetail from "./Pages/ProjectDetailPage.jsx";
 import EditProject from "./components/Project/EditProject.jsx";
 import AddProject from "./components/adminPanal/ui/AddProjectForm.jsx";
+import ContactUs from "./components/Home/ContactUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/about", element: <AboutClub /> },
-      { path: "/contact", element: <h1>Contact</h1> },
+      { path: "/contact", element: <ContactUs/> },
       { path: "/members", element: <TeamPage /> },
       { path: "/projects", element: <Projects /> },
       { path: "/projects/:id", element: <ProjectDetail/>},
