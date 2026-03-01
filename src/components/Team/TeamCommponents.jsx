@@ -46,7 +46,7 @@ export default function Team() {
   }, {});
 
   return (
-    <section className="min-h-screen bg-[#0B0F1A] py-28">
+    <section className="min-h-screen bg-[#0B0F1A] py-16">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-24">

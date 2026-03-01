@@ -1,55 +1,82 @@
-import React, { useState } from "react";
-import { Zap, Cpu, Smartphone, BarChart3, ArrowRight } from "lucide-react";
+import React from "react";
+import {
+  Cpu,
+  Wifi,
+  Brain,
+  Palette,
+  Globe,
+  Smartphone,
+  Video,
+} from "lucide-react";
 import DomainCard from "./ui/DomainCard";
 
 const domains = [
   {
-    icon: <Zap size={40} />,
-    title: "Power Systems",
-    desc: "Generation, transmission, and smart grids for sustainable energy.",
-    color: "from-yellow-400 to-orange-400",
-    accentBg: "bg-yellow-500/10",
-    borderColor: "border-yellow-500/20",
-    textColor: "text-yellow-400",
-  },
-  {
-    icon: <Cpu size={40} />,
-    title: "Electronics",
-    desc: "Analog, digital circuits and VLSI basics for modern applications.",
-    color: "from-cyan-400 to-blue-400",
-    accentBg: "bg-cyan-500/10",
-    borderColor: "border-cyan-500/20",
-    textColor: "text-cyan-400",
-  },
-  {
-    icon: <Smartphone size={40} />,
-    title: "Embedded & IoT",
-    desc: "Arduino, ESP32, sensors and automation for smart devices.",
+    icon: <Wifi size={40} />,
+    title: "IoT",
+    desc: "Smart sensors, ESP32, automation and connected devices for real-world solutions.",
     color: "from-green-400 to-emerald-400",
     accentBg: "bg-green-500/10",
     borderColor: "border-green-500/20",
     textColor: "text-green-400",
   },
   {
-    icon: <BarChart3 size={40} />,
-    title: "Control & Simulation",
-    desc: "MATLAB, Simulink and system modeling for complex systems.",
+    icon: <Cpu size={40} />,
+    title: "Embedded Systems",
+    desc: "Microcontrollers, real-time systems and hardware-software integration.",
+    color: "from-cyan-400 to-blue-400",
+    accentBg: "bg-cyan-500/10",
+    borderColor: "border-cyan-500/20",
+    textColor: "text-cyan-400",
+  },
+  {
+    icon: <Brain size={40} />,
+    title: "Machine Learning",
+    desc: "AI models, data analysis and intelligent systems for future innovations.",
     color: "from-purple-400 to-pink-400",
     accentBg: "bg-purple-500/10",
     borderColor: "border-purple-500/20",
     textColor: "text-purple-400",
   },
   {
-    icon: <BarChart3 size={40} />,
-    title: "Control & Simulation",
-    desc: "MATLAB, Simulink and system modeling for complex systems.",
-    color: "from-purple-400 to-pink-400",
-    accentBg: "bg-purple-500/10",
-    borderColor: "border-purple-500/20",
-    textColor: "text-purple-400",
+    icon: <Palette size={40} />,
+    title: "Graphic Designing",
+    desc: "Branding, UI/UX, posters and creative digital experiences.",
+    color: "from-yellow-400 to-orange-400",
+    accentBg: "bg-yellow-500/10",
+    borderColor: "border-yellow-500/20",
+    textColor: "text-yellow-400",
   },
-  
+  {
+    icon: <Globe size={40} />,
+    title: "Web Development",
+    desc: "Modern responsive websites using React, Next.js and backend technologies.",
+    color: "from-blue-400 to-indigo-400",
+    accentBg: "bg-blue-500/10",
+    borderColor: "border-blue-500/20",
+    textColor: "text-blue-400",
+  },
+  {
+    icon: <Smartphone size={40} />,
+    title: "App Development",
+    desc: "Android & iOS applications using Flutter, React Native and native stacks.",
+    color: "from-pink-400 to-rose-400",
+    accentBg: "bg-pink-500/10",
+    borderColor: "border-pink-500/20",
+    textColor: "text-pink-400",
+  },
+  {
+    icon: <Video size={40} />,
+    title: "Video Editing",
+    desc: "Cinematic edits, promotional videos and digital storytelling.",
+    color: "from-red-400 to-orange-400",
+    accentBg: "bg-red-500/10",
+    borderColor: "border-red-500/20",
+    textColor: "text-red-400",
+  },
 ];
+
+
 
 
 export default function Domains() {
@@ -88,7 +115,7 @@ export default function Domains() {
         </div>
 
         {/* Domains Grid */}
-        <div className="mt-16 grid md:grid-cols-4 sm:grid-cols-2 gap-8">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 sm:grid-cols-2 gap-8">
           {domains.map((domain, index) => (
             <DomainCard key={domain.title} domain={domain} index={index} />
           ))}
