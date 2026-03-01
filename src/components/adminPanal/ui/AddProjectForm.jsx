@@ -75,7 +75,7 @@ export default function AddProject() {
       alert("Project added successfully 🚀");
     } catch (err) {
       setError(err.response?.data?.message || "Failed to add project");
-      console.error("Error adding project:", err);
+      console.log("Error adding project:", err);
     } finally {
       setLoading(false);
     }
