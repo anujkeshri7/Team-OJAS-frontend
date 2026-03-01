@@ -115,19 +115,29 @@ function Card({ setConfirmOpen, setM, m, isAdminView }) {
         {/* Socials */}
         <div className="mt-auto pt-3 flex gap-2 sm:gap-3">
           {m.linkedin && (
-            <a className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
+
+
+            <a 
+            href={m.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
               flex items-center justify-center text-gray-300 hover:text-cyan-400">
               <Linkedin size={14} />
             </a>
           )}
           {m.github && (
-            <a className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
+            <a 
+            href={m.github} 
+            className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
               flex items-center justify-center text-gray-300 hover:text-cyan-400">
               <Github size={14} />
             </a>
           )}
           {m.instagram && (
-            <a className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
+            <a 
+            href={m.instagram}
+            className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5
               flex items-center justify-center text-gray-300 hover:text-cyan-400">
               <Instagram size={14} />
             </a>
