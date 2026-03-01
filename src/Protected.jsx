@@ -13,7 +13,11 @@ function Protected({ children, role }) {
           { withCredentials: true }
         );
 
-        setIsAuth(res.data.success);
+        if (res.data.user.role === role || res.data.user.role === "SuperAdmin") {
+          setIsAuth(true);
+        } else {
+          setIsAuth(false);
+        }
       } catch (error) {
         console.error("Error checking authentication:", error);
         setIsAuth(false);

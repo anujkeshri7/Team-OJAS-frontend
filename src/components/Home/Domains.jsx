@@ -39,6 +39,16 @@ const domains = [
     borderColor: "border-purple-500/20",
     textColor: "text-purple-400",
   },
+  {
+    icon: <BarChart3 size={40} />,
+    title: "Control & Simulation",
+    desc: "MATLAB, Simulink and system modeling for complex systems.",
+    color: "from-purple-400 to-pink-400",
+    accentBg: "bg-purple-500/10",
+    borderColor: "border-purple-500/20",
+    textColor: "text-purple-400",
+  },
+  
 ];
 
 
