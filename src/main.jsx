@@ -15,6 +15,7 @@ import Login from "./Pages/Login.jsx";
 import Protected from "./Protected.jsx";
 import ProjectDetail from "./Pages/ProjectDetailPage.jsx";
 import EditProject from "./components/Project/EditProject.jsx";
+import AddProject from "./components/adminPanal/ui/AddProjectForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: "/admin/add-project",
         element:(<Protected role="Admin">
-          <EditProject/>
+          <AddProject/>
         </Protected>)
       },
       {
