@@ -77,7 +77,7 @@ const AdminPanel = () => {
       members: {
         title: "Team Members",
         description: "Manage all team members",
-        content: <TeamPage />,
+        content: <TeamPage isAdminView={true} />,
       },
       events: {
         title: "Events",

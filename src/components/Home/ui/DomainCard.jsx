@@ -53,7 +53,7 @@ function DomainCard({ domain, index }) {
         />
 
         {/* CTA */}
-        <div
+        {/* <div
           className="relative z-10 mt-6 inline-flex items-center gap-2
           text-sm font-medium opacity-0 group-hover:opacity-100
           transition-all duration-300"
@@ -64,7 +64,7 @@ function DomainCard({ domain, index }) {
             className={`${domain.textColor}
             transition-transform duration-300 group-hover:translate-x-2`}
           />
-        </div>
+        </div> */}
 
         {/* Corner Glow */}
         <div
