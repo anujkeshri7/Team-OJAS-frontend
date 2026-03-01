@@ -67,8 +67,7 @@ export default function Projects() {
           </h1>
 
           <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Real-world projects built by our electrical engineering club members. 
-            From IoT devices to power systems, we're pushing innovation forward ⚡
+          From concept to creation, real-world IoT innovations engineered by Team OJAS
           </p>
         </div>
 

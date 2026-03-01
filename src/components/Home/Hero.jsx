@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ArrowRight, Zap } from "lucide-react";
 import Background from "../hero-section/Background";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [trail, setTrail] = useState([]);
   const trailTimeoutRef = React.useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let frameId;
@@ -237,7 +239,7 @@ export default function Hero() {
         >
           {/* Primary Button */}
           <button
-          onClick={}
+          onClick={()=>navigate('/projects')}
             className="group relative px-10 py-4 rounded-xl bg-cyan-500 text-black font-bold 
             text-lg hover:bg-cyan-400 transition-all duration-300
             shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_rgba(34,211,238,0.8)]
