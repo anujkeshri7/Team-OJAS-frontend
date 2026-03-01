@@ -74,7 +74,8 @@ export default function AddProject() {
       );
       alert("Project added successfully 🚀");
     } catch (err) {
-      setError("Failed to upload project");
+      setError(err.response?.data?.message || "Failed to add project");
+      console.error("Error adding project:", err);
     } finally {
       setLoading(false);
     }
