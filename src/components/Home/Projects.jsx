@@ -6,7 +6,12 @@ import { useEffect } from "react";
 import axios from "axios";
 
 
-const [projects, setProjects] = useState([]);
+
+
+
+export default function FeaturedProjects() {
+
+  const [projects, setProjects] = useState([]);
 
 useEffect(() => {
       const fetchProjects = async () => {
@@ -17,7 +22,7 @@ useEffect(() => {
           const data = await res.json();
   
           if (data?.projects) {
-            setProjects(data.projects);
+            setProjects(data.projects.slice(0, 3)); // Get only the first 3 projects for featured section
           }
         } catch (error) {
           console.error("Error fetching projects:", error);
@@ -28,7 +33,6 @@ useEffect(() => {
       fetchProjects();
     }, []);
 
-export default function FeaturedProjects() {
   const navigate = useNavigate();
   return (
     <section className="relative bg-[#0B0F1A] py-24 overflow-hidden">
