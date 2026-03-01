@@ -2,41 +2,31 @@ import React, { useState } from "react";
 import { ArrowRight, Zap, Code, Cpu, ExternalLink, GitBranch,Wifi } from "lucide-react";
 import ProjectCard from "../Project/ProjectCard";
 import { useNavigate } from "react-router-dom";
-
-const projects = [
-  {
-     id: 1,
-     title: "gaass fukna",
-     domain: "Power Systems",
-     description:
-       "IoT-based smart energy meter for real-time power monitoring and billing with cloud integration.",
-     tech: ["IoT", "ESP32", "Power Electronics", "REST API"],
-     icon: <Zap size={28} />,
-     image: "https://res.cloudinary.com/drdivev7j/image/upload/v1771002765/3_lyfttr.jpg",
-   },
-   {
-     id: 2,
-     title: "EV Charging Station",
-     domain: "Electric Vehicles",
-     description:
-       "Fast DC charging station design with 350kW capacity and intelligent load management.",
-     tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
-     icon: <Cpu size={28} />,
-     image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
-   },
-   {
-     id: 2,
-     title: "EV Charging Station",
-     domain: "Electric Vehicles",
-     description:
-       "Fast DC charging station design with 350kW capacity and intelligent load management.",
-     tech: ["MATLAB", "Power Converters", "CAN Bus", "Thermal Analysis"],
-     icon: <Cpu size={28} />,
-     image: "https://images.unsplash.com/photo-1617442479374-9cf648b4e38b?w=600&h=400&fit=crop",
-   },
-];
+import { useEffect } from "react";
+import axios from "axios";
 
 
+const [projects, setProjects] = useState([]);
+
+useEffect(() => {
+      const fetchProjects = async () => {
+        try {
+          const res = await fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/api/get-projects`,
+          );
+          const data = await res.json();
+  
+          if (data?.projects) {
+            setProjects(data.projects);
+          }
+        } catch (error) {
+          console.error("Error fetching projects:", error);
+          setProjects([]);
+        }
+      };
+  
+      fetchProjects();
+    }, []);
 
 export default function FeaturedProjects() {
   const navigate = useNavigate();
@@ -77,7 +67,7 @@ export default function FeaturedProjects() {
         {/* Projects Grid */}
         <div className="mt-16 grid md:grid-cols-3 sm:grid-cols-1 gap-8">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard key={project._id} project={project} index={index} />
           ))}
         </div>
 
