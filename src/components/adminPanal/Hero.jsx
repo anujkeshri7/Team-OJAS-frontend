@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LayoutDashboard,
   Users,
@@ -12,6 +12,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 
+import { useNavigate } from "react-router-dom";
+
 import DashboardContent from "./ui/DeshboardContent";
 import MembersContent from "./ui/MembersContent";
 import EventsContent from "./ui/EventContent";
@@ -19,10 +21,41 @@ import ProjectsContent from "./ui/ProjectsContent";
 import GalleryContent from "./ui/GalleryContent";
 import AnnouncementsContent from "./ui/AnnouncementsContent";
 import TeamPage from "../../Pages/TeamPage";
+import AdminAccess from "./ui/AdminAccess";
+
+import axios from "axios";  
 
 const AdminPanel = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleLogout=async ()=>{
+    await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/logout`,{ withCredentials: true });  
+    navigate("/login");
+  }
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/check-auth`,
+          { withCredentials: true }
+        );
+        if (res.data.user.role === "SuperAdmin") {
+          setIsSuperAdmin(true);
+        }
+        
+      } catch (error) {
+        console.error("Error checking super admin status:", error);
+    
+      }
+    };
+
+    checkAuth();
+},[])
 
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -31,6 +64,7 @@ const AdminPanel = () => {
     { id: "projects", label: "Projects", icon: Briefcase },
     { id: "gallery", label: "Gallery", icon: Images },
     { id: "announcements", label: "Announcements", icon: Bell },
+    ...(isSuperAdmin ? [{ id: "manageAccess", label: "Manage Access", icon: Users }] : []),
   ];
 
   const getPageContent = () => {
@@ -65,6 +99,11 @@ const AdminPanel = () => {
         description: "Post announcements",
         content: <AnnouncementsContent />,
       },
+      manageAccess:{
+        title: "Manage Access",
+        description: "Control user permissions and roles",
+        content: <AdminAccess />,
+      }
     };
     return contentMap[activeTab];
   };
@@ -137,6 +176,7 @@ const AdminPanel = () => {
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-all duration-200 border border-red-500/20 ${
               !sidebarOpen && "justify-center"
             }`}
+          onClick={handleLogout}
           >
             <LogOut size={20} />
             <span className={!sidebarOpen ? "hidden" : "font-medium text-sm"}>
