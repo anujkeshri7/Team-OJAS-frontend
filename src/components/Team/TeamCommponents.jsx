@@ -20,8 +20,9 @@ const SECTION_ORDER = [
   "Volunteers",
 ];
 
-export default function Team() {
+export default function Team({setConfirmOpen, setM, isAdminView = false, refresh}) {
   const [teamMembers, setTeamMembers] = useState([]);
+  
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -33,7 +34,7 @@ export default function Team() {
       }
     };
     fetchTeam();
-  }, []);
+  }, [refresh]);
 
   /* ======================
      Group by section
@@ -69,14 +70,15 @@ export default function Team() {
                 {section}
               </h2>
 
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
                 {members.map((member, idx) => (
+                  
                   <div
                     key={member.name}
                     className="opacity-0 animate-fadeUp"
                     style={{ animationDelay: `${idx * 120}ms` }}
                   >
-                    <Card m={member} />
+                    <Card   setConfirmOpen={setConfirmOpen} setM={setM} m={member} isAdminView={isAdminView} />
                   </div>
                 ))}
               </div>

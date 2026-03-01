@@ -1,6 +1,7 @@
 // components/Header.jsx
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png"
 
 
 export default function Header() {
@@ -39,11 +40,20 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         
         {/* Logo */}
-        <div 
-        onClick =  {()=>navigate('/')}
-        className="text-xl font-bold text-cyan-400 cursor-pointer">
-          ⚡OJAS
-        </div>
+       <div
+  onClick={() => navigate("/")}
+  className="flex items-center gap-3 cursor-pointer group"
+>
+  <img
+    src={logo}
+    alt="OJAS Logo"
+    className="h-9 w-9 object-contain"
+  />
+
+  <span className="text-xl font-medium tracking-[0.25em] text-cyan-300 group-hover:text-cyan-400 transition">
+    OJAS
+  </span>
+</div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-8 text-gray-300">

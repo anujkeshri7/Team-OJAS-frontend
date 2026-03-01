@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 export default function AddProject() {
   const [formData, setFormData] = useState({
@@ -28,6 +30,8 @@ export default function AddProject() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((p) => ({ ...p, [name]: value }));
@@ -43,7 +47,6 @@ export default function AddProject() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // REQUIRED VALIDATION
     if (!formData.title || !formData.domain || !formData.image) {
       setError("Title, Domain and Image are required");
       return;
@@ -65,28 +68,40 @@ export default function AddProject() {
     form.set("tech", JSON.stringify(techArray));
 
     try {
-
-      console.log("Submitting form data:", form);
       await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/add-project`,
         form,
         { withCredentials: true }
       );
-      alert("Project added successfully 🚀");
+      navigate("/admin");
     } catch (err) {
       setError(err.response?.data?.message || "Failed to add project");
-      console.log("Error adding project:", err);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#020617] to-[#0B1220] px-4 py-10 flex justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-[#020617] to-[#0B1220] px-4 py-10  flex justify-center">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-6xl bg-[#0F172A] rounded-2xl p-10 space-y-10 shadow-[0_0_40px_rgba(56,189,248,0.1)]"
+        className="relative w-full max-w-6xl bg-[#0F172A] rounded-2xl p-15 space-y-10 shadow-[0_0_40px_rgba(56,189,248,0.1)]"
       >
+        {/* BACK BUTTON */}
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="absolute top-4 left-6 flex items-center gap-1
+          px-2 py-1 rounded-lg
+          text-cyan-400
+           cursor-pointer
+          hover:bg-cyan-400/20 
+          transition"
+        >
+          <ArrowLeft size={20} />
+          
+        </button>
+
         {/* HEADER */}
         <header className="border-b border-slate-700 pb-6">
           <h1 className="text-3xl font-bold text-white">

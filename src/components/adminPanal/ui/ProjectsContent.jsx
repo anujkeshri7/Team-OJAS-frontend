@@ -9,11 +9,14 @@ import {
 } from "lucide-react";
 import AddProjectForm from "./AddProjectForm";
 
+import { useNavigate } from "react-router-dom";
+
 import ProjectCard from "../../Project/ProjectCard";
 
 const ProjectsContent = () => {
   const [showForm, setShowForm] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [refresh, setRefresh] = useState(false); // to trigger re-fetch after adding/editing
 
   // default icons map (backend ke liye)
   const iconMap = {
@@ -22,6 +25,8 @@ const ProjectsContent = () => {
     "IoT & Automation": Cpu,
     default: TrendingUp,
   };
+
+  const navigate = useNavigate();
 
   
     
@@ -44,11 +49,11 @@ const ProjectsContent = () => {
     };
 
     fetchProjects();
-  }, []);
+  }, [refresh]);
 
   return (
     <>
-      {!showForm ? (
+      
         <div className="p-8">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
@@ -62,7 +67,7 @@ const ProjectsContent = () => {
             </div>
 
             <button
-              onClick={() => setShowForm(true)}
+              onClick={() => navigate("/admin/add-project")}
               className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:opacity-90"
             >
               <Plus size={20} />
@@ -83,6 +88,8 @@ const ProjectsContent = () => {
                   key={project._id}
                   project={project}
                   Icon={IconComponent}
+                  isAdminView={true}
+                  setRefresh={setRefresh}
                 />
 
               );
@@ -96,15 +103,6 @@ const ProjectsContent = () => {
             </div>
           )}
         </div>
-      ) : (
-        <AddProjectForm
-          onClose={() => setShowForm(false)}
-          onAdd={(newProject) => {
-            setProjects((prev) => [...prev, newProject]);
-            setShowForm(false);
-          }}
-        />
-      )}
     </>
   );
 };
