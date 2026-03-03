@@ -93,7 +93,7 @@ function DeleteProjectPopup({
 
           {/* Actions */}
           <div className="flex justify-end gap-3">
-            <button
+            {/* <button
               onClick={onMoveToTrash}
               disabled={!isConfirmed}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm
@@ -106,7 +106,7 @@ function DeleteProjectPopup({
             >
               <Trash2 size={16} />
               Move to Trash
-            </button>
+            </button> */}
 
             <button
               onClick={onDeletePermanent}

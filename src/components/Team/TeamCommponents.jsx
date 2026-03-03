@@ -47,15 +47,15 @@ export default function Team({setConfirmOpen, setM, isAdminView = false, refresh
   }, {});
 
   return (
-    <section className="min-h-screen bg-[#0B0F1A] py-16">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="min-h-screen bg-[#0B0F1A] py-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-1 sm:px-2 lg:px-3 relative z-10">
         {/* Header */}
-        <div className="text-center mb-24">
+        <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white">
             Our <span className="text-cyan-400">Team</span>
           </h1>
           <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
-            Meet the people powering our Electrical Engineering Club ⚡
+            Meet the people powering our Electrical Engineering Club 
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default function Team({setConfirmOpen, setM, isAdminView = false, refresh
           if (!members || members.length === 0) return null;
 
           return (
-            <div key={section} className="mb-28">
+            <div key={section} className="mb-16">
               <h2 className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-12">
                 {section}
               </h2>

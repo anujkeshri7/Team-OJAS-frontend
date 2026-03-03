@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from "react";
 import { Cpu, Zap, Wifi, ArrowRight } from "lucide-react";
 import ProjectCard from "./ProjectCard";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -14,6 +16,7 @@ export default function Projects() {
   const [selectedDomain, setSelectedDomain] = useState("All");
   const [projects, setProjects] = useState([]); 
   const domains = ["All", ...new Set(projects.map((p) => p.domain))];
+  const navigate = useNavigate();
   const filteredProjects =
     selectedDomain === "All"
       ? projects
@@ -47,7 +50,7 @@ export default function Projects() {
     }, []);
 
   return (
-    <section className="relative min-h-screen bg-[#0B0F1A] py-24 overflow-hidden">
+    <section className="relative min-h-screen bg-[#0B0F1A] py-16 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full mix-blend-screen blur-3xl opacity-20 animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-screen blur-3xl opacity-20 animate-pulse" style={{ animationDelay: "1s" }} />
@@ -58,7 +61,7 @@ export default function Projects() {
         <div className="text-center mb-20" style={{ animation: "slideUpFade 0.8s ease-out" }}>
           <div className="inline-block mb-4">
             <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20">
-              ⚡ Featured Projects
+               Featured Projects
             </span>
           </div>
 
@@ -116,6 +119,7 @@ export default function Projects() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
+            onClick={()=>navigate('/contact')}
               className="px-8 py-4 rounded-full bg-cyan-500 text-black 
               font-bold hover:bg-cyan-400 
               transition-all duration-300 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50"
@@ -124,6 +128,7 @@ export default function Projects() {
             </button>
 
             <button
+              onClick={() => navigate('/about')}
               className="px-8 py-4 rounded-full bg-white/5 text-cyan-400 font-bold
               border border-cyan-500/30 hover:border-cyan-400 hover:bg-white/10
               transition-all duration-300 flex items-center gap-2"

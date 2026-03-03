@@ -20,13 +20,13 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signup data:", formData);
+    // console.log("Signup data:", formData);
    
 
     try {
 
         const res = await  axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/register`, formData);
-        console.log("Signup response:", res.data);
+        // console.log("Signup response:", res.data);
 
         if(res.data.success){
             navigate("/login");

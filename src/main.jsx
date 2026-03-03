@@ -20,24 +20,24 @@ import ContactUs from "./components/Home/ContactUs.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/", //done-f
     element: <App />,
     children: [
-      { path: "/", element: <HomePage /> },
-      { path: "/about", element: <AboutClub /> },
-      { path: "/contact", element: <ContactUs/> },
-      { path: "/members", element: <TeamPage /> },
-      { path: "/projects", element: <Projects /> },
-      { path: "/projects/:id", element: <ProjectDetail/>},
+      { path: "/", element: <HomePage /> }, //done-f
+      { path: "/about", element: <AboutClub /> }, //done-f
+      { path: "/contact", element: <ContactUs /> }, //done-f
+      { path: "/members", element: <TeamPage /> }, //done-f
+      { path: "/projects", element: <Projects /> }, //done-f
+      { path: "/projects/:id", element: <ProjectDetail /> }, //done-f
 
-      { path: "/signup", element: <Signup /> },
+      { path: "/signup", element: <Signup /> }, //done-f
 
-      { path: "/login", element: <Login /> },
+      { path: "/login", element: <Login /> }, //done-f
 
-      { path: "/add-members", element: <TeamMemberForm /> },
+      { path: "/add-members", element: <TeamMemberForm /> }, //done-f
 
       {
-        path: "/admin",
+        path: "/admin", //f-ho jayega badd me
         element: (
           <Protected role="Admin" >
             <AdminPage />
@@ -46,17 +46,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/add-project",
-        element:(<Protected role="Admin">
-          <AddProject/>
+        element: (<Protected role="Admin">
+          <AddProject />
         </Protected>)
       },
       {
         path: "/admin/projects/edit/:id",
-        element:(<Protected role="Admin">
-          <EditProject/>
+        element: (<Protected role="Admin">
+          <EditProject />
         </Protected>)
       }
-    
+
     ],
   },
 ]);

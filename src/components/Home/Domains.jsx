@@ -53,7 +53,7 @@ const domains = [
     desc: "Modern responsive websites using React, Next.js and backend technologies.",
     color: "from-blue-400 to-indigo-400",
     accentBg: "bg-blue-500/10",
-    borderColor: "border-blue-500/20",
+    borderColor: "md:border-blue-500/20",
     textColor: "text-blue-400",
   },
   {
@@ -81,7 +81,7 @@ const domains = [
 
 export default function Domains() {
   return (
-    <section className="relative bg-[#0B0F1A] py-24 overflow-hidden">
+    <section id="domains" className="relative bg-[#0B0F1A] py-14 overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div

@@ -56,10 +56,16 @@ useEffect(() => {
         >
          
 
-          <h2 className="text-5xl md:text-6xl font-black text-white mt-6">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-400 to-cyan-400">Projects</span>
+          
+            
+            {/* <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 via-orange-400 to-cyan-400">Projects</span> */}
+            {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">
+    Featured Projects
+</span> */}
+          
+ <h2 className="text-5xl md:text-6xl font-black text-white">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Projects</span>
           </h2>
-
           <p
             className="mt-4 text-gray-400 text-lg max-w-2xl mx-auto opacity-0"
             style={{ animation: "slideUpFade 0.8s ease-out 0.3s forwards" }}
@@ -82,7 +88,7 @@ useEffect(() => {
         >
           <button 
           onClick={()=>navigate('/projects')}
-          className="px-10 py-4 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.5)] hover:shadow-[0_0_20px_rgba(34,211,238,0.7)]">
+          className="px-10 py-4 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 text-black font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.5)] hover:shadow-[0_0_20px_rgba(34,211,238,0.7)]">
             View All Projects
           </button>
         </div>

@@ -128,7 +128,7 @@ export default function TeamMemberForm() {
 
           {/* IMAGE PREVIEW */}
           <div className="hidden md:block">
-            <div className="sticky top-10 bg-[#0E1424] border border-cyan-500/20 rounded-2xl p-6 text-center">
+            <div className="sticky top-20 bg-[#0E1424] border border-cyan-500/20 rounded-2xl p-6 text-center">
               {imagePreview ? (
                 <div className="relative">
                   <img

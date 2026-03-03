@@ -54,7 +54,7 @@ const ProjectsContent = () => {
   return (
     <>
       
-        <div className="p-8">
+        <div className="p-7 flex flex-col gap-8">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
             <div>
