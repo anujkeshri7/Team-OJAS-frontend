@@ -68,7 +68,7 @@ function Card({ setConfirmOpen, setM, m, isAdminView }) {
       )}
 
       {/* Image */}
-      <div className="w-full aspect-[4/3] bg-[#2A3A4E] overflow-hidden">
+      <div className="w-full aspect-4/3 bg-[#2A3A4E] overflow-hidden">
         <img
           src={m.profilePic?.url}
           alt={m.name}

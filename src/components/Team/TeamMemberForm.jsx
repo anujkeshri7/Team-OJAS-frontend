@@ -190,10 +190,13 @@ export default function TeamMemberForm() {
                  <option value="" className="bg-[#0B0F1A] text-white">
   Select position
 </option>
+{/* <option className="bg-[#0B0F1A] text-white">Faculty In-Charge</option> */}
+<option className="bg-[#0B0F1A] text-white">Final Year</option>
 <option className="bg-[#0B0F1A] text-white">Club Coordinator</option>
+<option className="bg-[#0B0F1A] text-white">Coordiantor</option>
 <option className="bg-[#0B0F1A] text-white">Executive Member</option>
 <option className="bg-[#0B0F1A] text-white">Volunteer</option>
-<option className="bg-[#0B0F1A] text-white">Final Year</option>
+
                 </select>
               </div>
               {errors.position && (

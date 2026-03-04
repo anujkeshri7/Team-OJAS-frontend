@@ -6,18 +6,24 @@ import { useState, useEffect } from "react";
    Position → Section Map
    ====================== */
 const positionToSection = {
+  "Faculty In-Charge": "Faculty In-Charge",
+  "Final Year": "Final Year",
   "Club Coordinator": "Club Coordinator",
-  "Executive Member":"Executives",
-  "Volunteer": "Volunteers",
+  "Coordiantor": "Coordiantor",
+  "Executive Member":"Executive",
+  "Volunteer": "Volunteer",
 };
 
 /* ======================
    Section Order
    ====================== */
 const SECTION_ORDER = [
+  "Faculty In-Charge",
+  "Final Year",
   "Club Coordinator",
-  "Executives",
-  "Volunteers",
+  "Coordiantor",
+  "Executive",
+  "Volunteer",
 ];
 
 export default function Team({setConfirmOpen, setM, isAdminView = false, refresh}) {
@@ -40,7 +46,7 @@ export default function Team({setConfirmOpen, setM, isAdminView = false, refresh
      Group by section
      ====================== */
   const groupedTeam = teamMembers.reduce((acc, member) => {
-    const section = positionToSection[member.position] || "Volunteers";
+    const section = positionToSection[member.position] || "Volunteer";
     if (!acc[section]) acc[section] = [];
     acc[section].push(member);
     return acc;
@@ -55,7 +61,7 @@ export default function Team({setConfirmOpen, setM, isAdminView = false, refresh
             Our <span className="text-cyan-400">Team</span>
           </h1>
           <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
-            Meet the people powering our Electrical Engineering Club 
+            Meet our team - The Force Behind Every Success
           </p>
         </div>
 
@@ -66,11 +72,29 @@ export default function Team({setConfirmOpen, setM, isAdminView = false, refresh
 
           return (
             <div key={section} className="mb-16">
-              <h2 className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-12">
+              <h2 className="pl-4 sm:pl-6 md:pl-7 lg:pl-10 text-2xl md:text-3xl font-semibold text-cyan-400 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
                 {section}
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
+              {/* <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10"> */}
+              
+                   {/* new grid classes for better responsiveness and spacing            */}
+                              <div className="
+                  grid
+                  grid-cols-1
+                  sm:grid-cols-2
+                  md:grid-cols-3
+                  lg:grid-cols-4
+                  xl:grid-cols-4
+                  gap-4
+                  sm:gap-6
+                  lg:gap-8
+                  px-4
+                  sm:px-6
+                  lg:px-8
+                  max-w-7xl
+                  mx-auto
+                ">
                 {members.map((member, idx) => (
                   
                   <div
