@@ -10,6 +10,7 @@ import {
   FileText,
   X,
   Loader2,
+  CheckCheck,
 } from "lucide-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +20,8 @@ export default function TeamMemberForm() {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+
+  const [imageSuccess, setImageSuccess] = useState(false);
 
   const {
     register,
@@ -49,6 +52,11 @@ export default function TeamMemberForm() {
     setUploadedFile(file.name);
     setImagePreview(URL.createObjectURL(file));
     setErrorMsg("");
+    // ✅ SHOW SUCCESS POPUP
+    setImageSuccess(true);
+    setTimeout(() => {
+      setImageSuccess(false);
+    }, 3000);
   };
 
   const removeImage = (e) => {
@@ -113,6 +121,34 @@ export default function TeamMemberForm() {
         </div>
 
         {/* GLOBAL MESSAGES */}
+        {/* IMAGE SUCCESS POPUP */}
+        {imageSuccess && (
+          <div
+            className="
+      fixed 
+      top-20 left-1/2 -translate-x-1/2   /* Mobile: center */
+      sm:left-auto sm:translate-x-0 sm:right-6 sm:top-20  /* Desktop: top-right */
+  
+      
+      text-green-400
+      bg-cyan-500/20 
+      border border-green-500/50 
+      px-4 sm:px-6 
+      py-3 
+      rounded-xl 
+      shadow-lg 
+      flex items-center gap-2
+      text-sm sm:text-base
+      w-[90%] sm:w-auto
+      max-w-sm
+      animate-fadeIn
+      z-50
+    "
+          >
+            <span className="text-lg"><CheckCheck className="text-green-400" /></span>
+            <span>Image uploaded successfully</span>
+          </div>
+        )}
         {successMsg && (
           <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-xl text-green-400">
             {successMsg}
@@ -168,7 +204,7 @@ export default function TeamMemberForm() {
               placeholder="Your name"
               error={errors.name}
               {...register("name", { required: "Name is required" })}
-               className="w-full py-3 bg-transparent text-white outline-none
+              className="w-full py-3 bg-transparent text-white outline-none
              focus:bg-transparent focus:text-white
              autofill:bg-transparent
              [-webkit-text-fill-color:white]"
@@ -187,15 +223,15 @@ export default function TeamMemberForm() {
              focus:bg-[#0B0F1A] focus:text-white"
                   {...register("position", { required: "Position is required" })}
                 >
-                 <option value="" className="bg-[#0B0F1A] text-white">
-  Select position
-</option>
-{/* <option className="bg-[#0B0F1A] text-white">Faculty In-Charge</option> */}
-<option className="bg-[#0B0F1A] text-white">Final Year</option>
-<option className="bg-[#0B0F1A] text-white">Club Coordinator</option>
-<option className="bg-[#0B0F1A] text-white">Coordiantor</option>
-<option className="bg-[#0B0F1A] text-white">Executive Member</option>
-<option className="bg-[#0B0F1A] text-white">Volunteer</option>
+                  <option value="" className="bg-[#0B0F1A] text-white">
+                    Select position
+                  </option>
+                  {/* <option className="bg-[#0B0F1A] text-white">Faculty In-Charge</option> */}
+                  <option className="bg-[#0B0F1A] text-white">Final Year</option>
+                  <option className="bg-[#0B0F1A] text-white">Club Coordinator</option>
+                  <option className="bg-[#0B0F1A] text-white">Coordiantor</option>
+                  <option className="bg-[#0B0F1A] text-white">Executive Member</option>
+                  <option className="bg-[#0B0F1A] text-white">Volunteer</option>
 
                 </select>
               </div>
@@ -213,9 +249,19 @@ export default function TeamMemberForm() {
               </label>
               <label className={`flex items-center justify-center gap-3 cursor-pointer
                 bg-[#0B0F1A] border-2 border-dashed rounded-xl px-6 py-8
-                ${errors.profileImage ? "border-red-500/50" : "border-cyan-500/40"}`}>
+                ${errors.profileImage
+                  ? "border-red-500/50"
+                  : uploadedFile
+                    ? "border-green-500/50"
+                    : "border-cyan-500/40"
+                }`}>
                 <Upload className="text-cyan-400" />
-                <span className="text-gray-300">Upload Image</span>
+                <span
+                  className={`text-sm sm:text-base truncate max-w-45 sm:max-w-xs
+  ${uploadedFile ? "text-green-400 font-medium" : "text-gray-300"}`}
+                >
+                  {uploadedFile ? uploadedFile : "Upload Image"}
+                </span>
                 <input
                   type="file"
                   accept="image/*"
@@ -282,6 +328,18 @@ export default function TeamMemberForm() {
           </form>
         </div>
       </div>
+      <style>
+        {`
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+`}
+      </style>
     </section>
   );
 }
