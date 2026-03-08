@@ -17,6 +17,7 @@ import ProjectDetail from "./Pages/ProjectDetailPage.jsx";
 import EditProject from "./components/Project/EditProject.jsx";
 import AddProject from "./components/adminPanal/ui/AddProjectForm.jsx";
 import ContactUs from "./components/Home/ContactUs.jsx";
+import Gallery from "./components/Gallery/gallery.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> }, //done-f
 
       { path: "/add-members", element: <TeamMemberForm /> }, //done-f
-
+      { path: "/gallery", element: <Gallery /> }, 
+    
       {
         path: "/admin", //f-ho jayega badd me
         element: (
