@@ -57,7 +57,7 @@ export default function ContactUs() {
 
           <h2 className="text-5xl md:text-6xl font-black text-white">
             Contact{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-400">
               Us
             </span>
           </h2>

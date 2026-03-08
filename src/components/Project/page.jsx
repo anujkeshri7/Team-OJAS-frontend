@@ -66,7 +66,7 @@ export default function Projects() {
           </div>
 
           <h1 className="text-5xl md:text-6xl font-bold text-white mt-6 leading-tight">
-            Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400">Excellence</span>
+            Engineering <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-400">Excellence</span>
           </h1>
 
           <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">

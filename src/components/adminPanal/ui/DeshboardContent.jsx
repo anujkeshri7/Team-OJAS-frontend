@@ -56,7 +56,7 @@ const DashboardContent = () => {
             <p className="text-slate-400 text-sm font-medium mb-2">{stat.label}</p>
 
             {/* Value */}
-            <h3 className={`text-4xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-3`}>
+            <h3 className={`text-4xl font-black bg-linear-to-r ${stat.color} bg-clip-text text-transparent mb-3`}>
               {stat.value}
             </h3>
 

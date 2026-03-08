@@ -103,7 +103,7 @@ export default function Domains() {
           
 
           <h2 className="text-5xl md:text-6xl font-black text-white mt-6">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400">Domains</span>
+            Our <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-400">Domains</span>
           </h2>
 
           <p

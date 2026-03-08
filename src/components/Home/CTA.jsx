@@ -30,7 +30,7 @@ export default function FinalCTA() {
         {/* Heading */}
         <h2 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
           Ready to{" "}
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500
+          <span className="bg-linear-to-r from-cyan-400 to-blue-500
           bg-clip-text text-transparent">
             Build the Future
           </span>
@@ -48,7 +48,7 @@ export default function FinalCTA() {
           href="#join"
           className="group inline-flex items-center gap-3 mt-12
           px-12 py-4 rounded-2xl
-          bg-gradient-to-r from-cyan-400 to-blue-500
+          bg-linear-to-r from-cyan-400 to-blue-500
           text-black font-semibold text-lg
           transition-all duration-300
           hover:shadow-[0_0_40px_rgba(34,211,238,0.8)]

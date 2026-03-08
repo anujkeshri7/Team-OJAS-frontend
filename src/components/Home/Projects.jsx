@@ -59,12 +59,12 @@ useEffect(() => {
           
             
             {/* <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 via-orange-400 to-cyan-400">Projects</span> */}
-            {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">
+            {/* <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-red-600">
     Featured Projects
 </span> */}
           
  <h2 className="text-5xl md:text-6xl font-black text-white">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Projects</span>
+            Featured <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-400">Projects</span>
           </h2>
           <p
             className="mt-4 text-gray-400 text-lg max-w-2xl mx-auto opacity-0"
@@ -95,7 +95,7 @@ useEffect(() => {
 
         {/* Bottom Accent Line */}
         <div
-          className="mt-20 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 mx-auto max-w-md"
+          className="mt-20 h-1 bg-linear-to-r from-transparent via-cyan-500 to-transparent opacity-0 mx-auto max-w-md"
           style={{
             animation: "expandWidth 1.2s ease-out 1.2s forwards",
             width: "0%",

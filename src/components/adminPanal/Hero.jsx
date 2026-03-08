@@ -122,7 +122,7 @@ transition-all duration-300 flex flex-col sticky top-0 h-screen`}
         <div className="p-2 md:md:border-b border-cyan-500/10">
           <div className="flex items-center justify-between">
             <div className={`${!sidebarOpen && "hidden"}`}>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 OJAS
               </h1>
               <p className="text-xs text-gray-400 mt-1">Admin Panel</p>

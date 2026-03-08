@@ -318,7 +318,7 @@ export default function TeamMemberForm() {
             {/* SUBMIT */}
             <button
               disabled={isSubmitting}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500
+              className="w-full py-4 rounded-xl bg-linear-to-r from-cyan-500 to-blue-500
               text-white font-semibold flex items-center justify-center gap-2
               disabled:opacity-50"
             >

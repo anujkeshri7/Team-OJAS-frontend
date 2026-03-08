@@ -253,7 +253,7 @@ export default function ProjectDetail({ onBack }) {
         {sections.length > 0 && (
           <div className="px-6 sm:px-8 lg:px-12 py-8">
             <div className="max-w-7xl mx-auto">
-              <div className="h-px bg-gradient-to-r from-transparent via-slate-700/30 to-transparent" />
+              <div className="h-px bg-linear-to-r from-transparent via-slate-700/30 to-transparent" />
             </div>
           </div>
         )}

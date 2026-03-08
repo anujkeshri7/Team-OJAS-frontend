@@ -89,7 +89,7 @@ export default function WhyJoinUs() {
                   {/* Divider */}
                   <div
                     className={`mx-auto mt-4 h-1 w-10 rounded-full
-                    bg-gradient-to-r ${r.color}
+                    bg-linear-to-r ${r.color}
                     transition-all duration-300
                     group-hover:w-16`}
                   />

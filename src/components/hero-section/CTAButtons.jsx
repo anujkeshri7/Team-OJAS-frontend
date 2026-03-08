@@ -18,7 +18,7 @@ function CTAButtons() {
           >
             
             <div 
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+              className="absolute inset-0 bg-linear-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500"
               style={{
                 animation: "shimmer 3s infinite",
               }}

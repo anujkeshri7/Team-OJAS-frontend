@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
-import teamOjas from "../../assets/teamOjas.jpeg";
+// import teamOjas from "../../assets/teamOjas.jpeg";
+import  OJAS2025 from "../../assets/OJAS2025.jpeg";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AboutTeamOJAS() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -24,12 +28,12 @@ export default function AboutTeamOJAS() {
           style={{ animation: "slideUpFade 0.8s ease-out" }}
         >
           <p className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20 inline-block">
-             WHO WE ARE
+            WHO WE ARE
           </p>
 
           <h2 className="text-5xl md:text-6xl font-bold text-white mt-6">
             About{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-400">
               Team OJAS
             </span>
           </h2>
@@ -48,7 +52,7 @@ export default function AboutTeamOJAS() {
           <div className="space-y-8 relative">
 
             {/* Timeline Glow Line */}
-            <div className="absolute left-0 top-2 bottom-2 w-[2px] bg-gradient-to-b from-cyan-500 via-blue-500 to-green-500 opacity-30"></div>
+            <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-linear-to-b from-cyan-500 via-blue-500 to-green-500 opacity-30"></div>
 
             <div className="pl-8 relative">
               <div className="absolute -left-2 top-2 w-4 h-4 bg-cyan-400 rounded-full blur-sm"></div>
@@ -81,10 +85,10 @@ export default function AboutTeamOJAS() {
           </div>
 
           {/* Right Image Card */}
-          <div className="relative bg-gradient-to-br from-cyan-500/5 to-transparent border border-cyan-500/20 rounded-3xl p-8 backdrop-blur-sm hover:border-cyan-400 transition">
+          <div className="relative bg-linear-to-br from-cyan-500/5 to-transparent border border-cyan-500/20 rounded-3xl p-4 sm:p-6 md:p-8 backdrop-blur-sm hover:border-cyan-400 transition">
             <div className="overflow-hidden rounded-2xl">
               <img
-                src={teamOjas}
+                src={OJAS2025}
                 alt="Team OJAS"
                 className="w-full h-64 object-cover hover:scale-105 transition duration-500"
               />
@@ -99,8 +103,16 @@ export default function AboutTeamOJAS() {
                 innovators, and problem solvers.
               </p>
             </div>
+{/* 4. 3D Press with Glow */}
+<Link to="/members"
+  className="mt-8 inline-block px-8 py-3 rounded-full bg-cyan-500 text-black font-bold shadow-[0_6px_0_#0e7490] transition-all duration-150 hover:shadow-[0_3px_0_#0e7490] hover:translate-y-0.75 active:shadow-none active:translate-y-1.5"
+>
+  Meet Our Team →
+</Link>
+
           </div>
 
+          
         </div>
       </div>
 
