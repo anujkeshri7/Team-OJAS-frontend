@@ -7,10 +7,15 @@ import {
   Zap,
   Mail,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png"
+import { use } from "react";
+;
 
 export default function Footer() {
+  const navigate = useNavigate();
+
+
   return (
     <footer className="relative bg-linear-to-b from-[#0B0F1A] to-[#070B14] md:md:border-t border-white/10 text-gray-400 overflow-hidden">
 
@@ -67,7 +72,7 @@ export default function Footer() {
                   <span className="group-hover:text-cyan-400 transition">
                     {link.name}
                   </span>
-                  <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute left-0 -bottom-1 w-0 h-px bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               </li>
             ))}
@@ -90,9 +95,9 @@ export default function Footer() {
                 icon: Linkedin,
                 href: "https://www.linkedin.com/company/ojasnith/posts/?feedView=all",
               },
-              { icon: Github, href: "#" },
-              { icon: Youtube, href: "#" },
-              { icon: Mail, href: "mailto:electricalclub@email.com" },
+              { icon: Github, href: "https://github.com/anujkeshri7/Team-OJAS-frontend" },
+              // { icon: Youtube, href: "#" },
+              { icon: Mail, href: "mailto:electricalclub@email.com?subject=Website Query&body=Hello Team OJAS!" },
             ].map((s, i) => {
               const Icon = s.icon;
               return (

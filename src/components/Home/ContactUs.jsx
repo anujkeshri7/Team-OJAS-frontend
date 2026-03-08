@@ -1,10 +1,41 @@
 import React, { useEffect } from "react";
-
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
 export default function ContactUs() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.send(
+      "team-ojas-service",
+      "template_qz6m5ap",
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: "24bee014@nith.ac.in"
+      },
+      "-fXFIIIhFw6Br0kDw"
+    )
+      .then(() => {
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch(() => {
+        alert("Failed to send message");
+      });
+  };
+
 
   return (
     <section className="relative bg-[#0B0F1A] py-20 overflow-hidden min-h-screen">
@@ -37,7 +68,7 @@ export default function ContactUs() {
             we’d love to connect.
           </p>
 
-          <div className="w-24 h-[3px] bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto mt-6 rounded-full" />
+          <div className="w-24 h-0.75 bg-linear-to-r from-cyan-400 to-blue-400 mx-auto mt-6 rounded-full" />
         </div>
 
         {/* Content */}
@@ -47,12 +78,12 @@ export default function ContactUs() {
         >
 
           {/* Left Info */}
-          <div className="space-y-10 text-gray-400 text-lg" 
+          <div className="space-y-10 text-gray-400 text-lg"
           >
 
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-white">
-                Let's Build Something Together 🚀
+                Let's Build Something Together 
               </h3>
 
               <p>
@@ -81,20 +112,26 @@ export default function ContactUs() {
           {/* Right Form Card */}
           <div className="bg-linear-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-3xl p-10 backdrop-blur-xl shadow-[0_0_40px_rgba(34,211,238,0.15)]">
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
 
               <div>
                 <input
+
                   type="text"
                   placeholder="Your Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full bg-[#111827] border border-cyan-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 transition"
                 />
               </div>
 
               <div>
                 <input
+
                   type="email"
                   placeholder="Your Email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-[#111827] border border-cyan-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 transition"
                 />
               </div>
@@ -103,6 +140,8 @@ export default function ContactUs() {
                 <textarea
                   rows="4"
                   placeholder="Your Message"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full bg-[#111827] border border-cyan-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 transition resize-none"
                 />
               </div>
@@ -113,7 +152,7 @@ export default function ContactUs() {
             text-lg hover:bg-cyan-400 transition-all duration-300
             shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_rgba(34,211,238,0.8)]
             overflow-hidden"
-               
+
               >
                 Send Message
               </button>

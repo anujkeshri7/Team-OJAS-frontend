@@ -56,7 +56,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0B0F1A] px-4">
+    <div className="min-h-screen flex flex-col gap-4 items-center justify-center bg-[#0B0F1A] px-4">
+          <div
+            className="w-full max-w-md bg-[#111827] rounded-2xl shadow-lg border border-cyan-500/20 p-3"          >
+            <p className="text-red-400 font-semibold mb-1">Only for Admin access</p>
+            <p className="text-cyan-400">For admin access, please contact the administrator.</p>
+          </div>      
       <div className="w-full max-w-md bg-[#111827] rounded-2xl shadow-lg p-8">
 
         <h2 className="text-3xl font-bold text-white text-center mb-6">
@@ -64,6 +69,7 @@ export default function Login() {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
+
 
           {/* Email */}
           <div>

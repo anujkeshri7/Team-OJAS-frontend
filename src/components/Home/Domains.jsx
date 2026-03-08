@@ -14,7 +14,7 @@ const domains = [
   {
     icon: <Wifi size={40} />,
     title: "IoT",
-    desc: "Smart sensors, ESP32, automation and connected devices for real-world solutions.",
+    desc: "Sensors, ESP32 & smart automation.",
     color: "from-green-400 to-emerald-400",
     accentBg: "bg-green-500/10",
     borderColor: "border-green-500/20",
@@ -23,7 +23,7 @@ const domains = [
   {
     icon: <Cpu size={40} />,
     title: "Embedded Systems",
-    desc: "Microcontrollers, real-time systems and hardware-software integration.",
+    desc: "Microcontrollers & real-time systems.",
     color: "from-cyan-400 to-blue-400",
     accentBg: "bg-cyan-500/10",
     borderColor: "border-cyan-500/20",
@@ -32,7 +32,7 @@ const domains = [
   {
     icon: <Brain size={40} />,
     title: "Machine Learning",
-    desc: "AI models, data analysis and intelligent systems for future innovations.",
+    desc: "AI models & data analysis.",
     color: "from-purple-400 to-pink-400",
     accentBg: "bg-purple-500/10",
     borderColor: "border-purple-500/20",
@@ -41,7 +41,7 @@ const domains = [
   {
     icon: <Palette size={40} />,
     title: "Graphic Designing",
-    desc: "Branding, UI/UX, posters and creative digital experiences.",
+    desc: "Branding, UI/UX & posters.",
     color: "from-yellow-400 to-orange-400",
     accentBg: "bg-yellow-500/10",
     borderColor: "border-yellow-500/20",
@@ -50,7 +50,7 @@ const domains = [
   {
     icon: <Globe size={40} />,
     title: "Web Development",
-    desc: "Modern responsive websites using React, Next.js and backend technologies.",
+    desc: "React, Next.js & modern websites.",
     color: "from-blue-400 to-indigo-400",
     accentBg: "bg-blue-500/10",
     borderColor: "md:border-blue-500/20",
@@ -59,7 +59,7 @@ const domains = [
   {
     icon: <Smartphone size={40} />,
     title: "App Development",
-    desc: "Android & iOS applications using Flutter, React Native and native stacks.",
+    desc: "Android & iOS apps.",
     color: "from-pink-400 to-rose-400",
     accentBg: "bg-pink-500/10",
     borderColor: "border-pink-500/20",
@@ -68,7 +68,7 @@ const domains = [
   {
     icon: <Video size={40} />,
     title: "Video Editing",
-    desc: "Cinematic edits, promotional videos and digital storytelling.",
+    desc: "Cinematic edits, promotional videos .",
     color: "from-red-400 to-orange-400",
     accentBg: "bg-red-500/10",
     borderColor: "border-red-500/20",
@@ -115,7 +115,7 @@ export default function Domains() {
         </div>
 
         {/* Domains Grid */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 sm:grid-cols-2 gap-8">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 sm:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
           {domains.map((domain, index) => (
             <DomainCard key={domain.title} domain={domain} index={index} />
           ))}
@@ -123,7 +123,7 @@ export default function Domains() {
 
         {/* Bottom Accent */}
         <div
-          className="mt-20 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 mx-auto max-w-md"
+          className="mt-20 h-1 bg-linear-to-r from-transparent via-cyan-500 to-transparent opacity-0 mx-auto max-w-md"
           style={{
             animation: "expandWidth 1.2s ease-out 1.2s forwards",
             width: "0%",

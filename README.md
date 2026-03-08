@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://team-ojas-nith.vercel.app/favicon.ico" width="60" alt="OJAS Logo" />
+<img src="/frontend/src/assets/ojas-logo.png" width="60" alt="OJAS Logo" />
 
 # Team OJAS — Official Website (Frontend)
 
@@ -97,7 +97,7 @@ Each card shows: Profile photo, Name, Role, Short Bio, and social links (LinkedI
 
 ---
 
-### 2. Member Self-Registration (`/add-member`)
+### 2. Member Self-Registration (`/add-members`)
 
 A **temporarily open secret route** that allows members to submit their own details. The form includes:
 

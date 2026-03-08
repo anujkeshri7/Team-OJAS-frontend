@@ -29,6 +29,9 @@ export default function Header() {
     {
       name: "Contact",
       link: "/contact"
+    },
+    { name: "Sign In",
+      link: "/login"
     }
   ];
 
