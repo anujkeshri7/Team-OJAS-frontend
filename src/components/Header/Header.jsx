@@ -1,6 +1,6 @@
 // components/Header.jsx
 import { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png"
 
 
@@ -10,47 +10,50 @@ export default function Header() {
 
   const menuItems = [
     {
-        name: "Home",
-        link: "/"
+      name: "Home",
+      link: "/"
     },
     {
-        name: "About",
-        link: "/about"
+      name: "About",
+      link: "/about"
     },
 
-    {  
-        name: "Projects",
-        link: "/projects"
+    {
+      name: "Projects",
+      link: "/projects"
     },
     {
-        name: "Our Team",
-        link: "/members"
+      name: "Our Team",
+      link: "/members"
     },
     {
-        name: "Contact",
-        link:"/contact"
+      name: "Contact",
+      link: "/contact"
+    },
+    { name: "Sign In",
+      link: "/login"
     }
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0B0F1A] border-b border-cyan-500/20">
+    <header className="sticky top-0 z-50 bg-[#0B0F1A] md:md:border-b border-cyan-500/20">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        
-        {/* Logo */}
-       <div
-  onClick={() => navigate("/")}
-  className="flex items-center gap-3 cursor-pointer group"
->
-  <img
-    src={logo}
-    alt="OJAS Logo"
-    className="h-9 w-9 object-contain"
-  />
 
-  <span className="text-xl font-medium tracking-[0.25em] text-cyan-300 group-hover:text-cyan-400 transition">
-    OJAS
-  </span>
-</div>
+        {/* Logo */}
+        <div
+          onClick={() => navigate("/")}
+          className="flex items-center gap-3 cursor-pointer group"
+        >
+          <img
+            src={logo}
+            alt="OJAS Logo"
+            className="h-9 w-9 object-contain"
+          />
+
+          <span className="text-xl font-medium tracking-[0.25em] text-cyan-300 group-hover:text-cyan-400 transition">
+            OJAS
+          </span>
+        </div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-8 text-gray-300">
@@ -78,7 +81,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-[#0B0F1A] border-t border-cyan-500/20">
+        <div className="md:hidden bg-[#0B0F1A] md:md:border-t border-cyan-500/20">
           <nav className="flex flex-col px-6 py-4 gap-4 text-gray-300">
             {menuItems.map(
               (item) => (

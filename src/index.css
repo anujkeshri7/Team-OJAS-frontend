@@ -11,4 +11,22 @@ select:-webkit-autofill {
   caret-color: #ffffff;
   transition: background-color 9999s ease-in-out 0s;
 }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #0B0F1A;
+}
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0b0e1b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}

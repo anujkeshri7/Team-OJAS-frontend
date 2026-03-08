@@ -23,7 +23,7 @@ import AnnouncementsContent from "./ui/AnnouncementsContent";
 import TeamPage from "../../Pages/TeamPage";
 import AdminAccess from "./ui/AdminAccess";
 
-import axios from "axios";  
+import axios from "axios";
 
 const AdminPanel = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -32,8 +32,8 @@ const AdminPanel = () => {
 
   const navigate = useNavigate();
 
-  const handleLogout=async ()=>{
-    await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/logout`,{ withCredentials: true });  
+  const handleLogout = async () => {
+    await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/logout`, { withCredentials: true });
     navigate("/login");
   }
 
@@ -47,15 +47,15 @@ const AdminPanel = () => {
         if (res.data.user.role === "SuperAdmin") {
           setIsSuperAdmin(true);
         }
-        
+
       } catch (error) {
         console.error("Error checking super admin status:", error);
-    
+
       }
     };
 
     checkAuth();
-},[])
+  }, [])
 
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -99,7 +99,7 @@ const AdminPanel = () => {
         description: "Post announcements",
         content: <AnnouncementsContent />,
       },
-      manageAccess:{
+      manageAccess: {
         title: "Manage Access",
         description: "Control user permissions and roles",
         content: <AdminAccess />,
@@ -111,18 +111,18 @@ const AdminPanel = () => {
   const currentPage = getPageContent();
 
   return (
-    <div className="flex h-screen bg-[#0a0e27] text-white overflow-hidden">
+    <div className="flex min-h-screen  text-white ">
       {/* Sidebar */}
       <aside
-        className={`${
-          sidebarOpen ? "w-64" : "w-20"
-        } bg-gradient-to-b from-[#0f1729] to-[#0a0e27] border-r border-cyan-500/10 transition-all duration-300 flex flex-col overflow-y-auto`}
+        className={`${sidebarOpen ? "w-64" : "w-20"
+          } backdrop-blur-xl bg-[#0f1729]/80 border-r border-white/10 
+transition-all duration-300 flex flex-col sticky top-0 h-screen`}
       >
         {/* Logo Section */}
-        <div className="p-6 border-b border-cyan-500/10">
+        <div className="p-2 md:md:border-b border-cyan-500/10">
           <div className="flex items-center justify-between">
             <div className={`${!sidebarOpen && "hidden"}`}>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 OJAS
               </h1>
               <p className="text-xs text-gray-400 mt-1">Admin Panel</p>
@@ -137,7 +137,7 @@ const AdminPanel = () => {
         </div>
 
         {/* Menu Items */}
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="flex flex-col  p-4 ">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -145,20 +145,18 @@ const AdminPanel = () => {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
-                  isActive
-                    ? "bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-300"
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${isActive
+                    ? "bg-linear-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-300"
                     : "text-gray-300 hover:bg-cyan-500/10"
-                }`}
+                  }`}
               >
                 <Icon
                   size={20}
                   className={isActive ? "text-cyan-400" : "text-gray-400 group-hover:text-cyan-400"}
                 />
                 <span
-                  className={`${
-                    !sidebarOpen && "hidden"
-                  } font-medium text-sm transition-colors`}
+                  className={`${!sidebarOpen && "hidden"
+                    } font-medium text-sm transition-colors`}
                 >
                   {item.label}
                 </span>
@@ -171,12 +169,11 @@ const AdminPanel = () => {
         </nav>
 
         {/* Logout Button */}
-        <div className="p-4 border-t border-cyan-500/10">
+        <div className="p-4 md:border-t border-cyan-500/10">
           <button
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-all duration-200 border border-red-500/20 ${
-              !sidebarOpen && "justify-center"
-            }`}
-          onClick={handleLogout}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-all duration-200 border border-red-500/20 ${!sidebarOpen && "justify-center"
+              }`}
+            onClick={handleLogout}
           >
             <LogOut size={20} />
             <span className={!sidebarOpen ? "hidden" : "font-medium text-sm"}>
@@ -187,33 +184,13 @@ const AdminPanel = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col overflow-hidden">
+      <main className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-[#0f1729] border-b border-cyan-500/10 px-8 py-6 sticky top-0 z-10">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-white">
-                {currentPage.title}
-              </h1>
-              <p className="text-gray-400 text-sm mt-1">
-                {currentPage.description}
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <button className="p-2 hover:bg-cyan-500/10 rounded-lg transition-colors relative">
-                <Bell size={20} className="text-gray-300" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-              </button>
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center font-bold">
-                A
-              </div>
-            </div>
-          </div>
-        </header>
+
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto">
-          <div className="max-w-7xl">{currentPage.content}</div>
+        <div className="flex-1 overflow-y-auto ">
+          <div className=" w-full">{currentPage.content}</div>
         </div>
       </main>
     </div>

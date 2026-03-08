@@ -122,7 +122,7 @@ export default function ProjectDetail({ onBack }) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center">
         <div className="text-center space-y-4">
-          <div className="w-12 h-12 border-4 border-slate-700 border-t-slate-400 rounded-full animate-spin mx-auto"></div>
+          <div className="w-12 h-12 border-4 border-slate-700 md:md:border-t-slate-400 rounded-full animate-spin mx-auto"></div>
           <p className="text-slate-400">Loading project details...</p>
         </div>
       </div>
@@ -200,7 +200,7 @@ export default function ProjectDetail({ onBack }) {
 
                 {/* Quick Stats */}
                 {p.tech && p.tech.length > 0 && (
-                  <div className="flex gap-6 pt-4 border-t border-slate-700/50">
+                  <div className="flex gap-6 pt-4 md:md:border-t border-slate-700/50">
                     <div>
                       <p className="text-xs uppercase tracking-widest text-slate-500 mb-1">Technologies</p>
                       <p className="text-2xl font-bold text-white">{p.tech.length}</p>
@@ -253,7 +253,7 @@ export default function ProjectDetail({ onBack }) {
         {sections.length > 0 && (
           <div className="px-6 sm:px-8 lg:px-12 py-8">
             <div className="max-w-7xl mx-auto">
-              <div className="h-px bg-gradient-to-r from-transparent via-slate-700/30 to-transparent" />
+              <div className="h-px bg-linear-to-r from-transparent via-slate-700/30 to-transparent" />
             </div>
           </div>
         )}
@@ -306,7 +306,7 @@ export default function ProjectDetail({ onBack }) {
 
                       {/* Expanded Content */}
                       {isExpanded && (
-                        <div className="px-6 pb-6 border-t border-slate-700/50 pt-6">
+                        <div className="px-6 pb-6 md:md:border-t border-slate-700/50 pt-6">
                           <p className="text-slate-300 leading-relaxed text-base">
                             {section.content}
                           </p>

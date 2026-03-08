@@ -103,7 +103,7 @@ export default function AddProject() {
         </button>
 
         {/* HEADER */}
-        <header className="border-b border-slate-700 pb-6">
+        <header className="md:md:border-b border-slate-700 pb-6">
           <h1 className="text-3xl font-bold text-white">
             Add New <span className="text-cyan-400">Project</span>
           </h1>

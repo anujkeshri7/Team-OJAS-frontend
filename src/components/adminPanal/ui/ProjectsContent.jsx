@@ -54,7 +54,7 @@ const ProjectsContent = () => {
   return (
     <>
       
-        <div className="p-8">
+        <div className="p-7 flex flex-col gap-8">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
             <div>
@@ -68,7 +68,7 @@ const ProjectsContent = () => {
 
             <button
               onClick={() => navigate("/admin/add-project")}
-              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:opacity-90"
+              className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:opacity-90"
             >
               <Plus size={20} />
               Add Project

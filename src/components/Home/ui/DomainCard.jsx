@@ -67,7 +67,7 @@ function DomainCard({ domain, index }) {
           relative z-10 
           mt-5 sm:mt-6 
           h-[3px] w-12 rounded-full
-          bg-gradient-to-r ${domain.color}
+          bg-linear-to-r ${domain.color}
           transition-all duration-500
           group-hover:w-100
           `}

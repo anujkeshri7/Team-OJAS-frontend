@@ -138,7 +138,7 @@ export default function Hero() {
           return (
             <div
               key={dot.id}
-              className="absolute rounded-full bg-gradient-to-r from-cyan-400 to-blue-400"
+              className="absolute rounded-full bg-linear-to-r from-cyan-400 to-blue-400"
               style={{
                 left: `${dot.x}px`,
                 top: `${dot.y}px`,
@@ -201,7 +201,7 @@ export default function Hero() {
                 <span className=" text-xl md:text-2xl text-cyan-400 ">
                 Innovation{" "}
             </span>
-                , Driven by Determination</span> •
+                , Driven by Determination</span> 
 
             </p>
 
@@ -247,7 +247,7 @@ export default function Hero() {
           >
 
             <div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+              className="absolute inset-0 bg-linear-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500"
               style={{
                 animation: "shimmer 3s infinite",
               }}
@@ -277,7 +277,7 @@ export default function Hero() {
         >
           <div className="group">
             <div className="text-4xl font-bold text-cyan-400 group-hover:scale-110 transition-transform">
-              50+
+              75+
             </div>
             <div className="text-gray-400 text-sm mt-1 uppercase tracking-wider">Members</div>
           </div>
@@ -300,7 +300,7 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <div
-        className="absolute bottom-8 text-gray-400 text-sm"
+        className="absolute bottom-4 md:bottom-8 text-gray-400 text-xs md:text-sm text-center w-full"
         style={{
           animation: "bounceScroll 2s ease-in-out infinite",
         }}
