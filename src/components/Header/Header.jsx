@@ -26,13 +26,17 @@ export default function Header() {
       name: "Our Team",
       link: "/members"
     },
+        { name: "Gallery",
+      link: "/gallery"
+    },
     {
       name: "Contact",
       link: "/contact"
     },
     { name: "Sign In",
       link: "/login"
-    }
+    },
+
   ];
 
   return (
