@@ -22,6 +22,7 @@ import GalleryContent from "./ui/GalleryContent";
 import AnnouncementsContent from "./ui/AnnouncementsContent";
 import TeamPage from "../../Pages/TeamPage";
 import AdminAccess from "./ui/AdminAccess";
+import ImageUploader from "./ui/ImageUploader";
 
 import axios from "axios";
 
@@ -64,6 +65,7 @@ const AdminPanel = () => {
     { id: "projects", label: "Projects", icon: Briefcase },
     { id: "gallery", label: "Gallery", icon: Images },
     { id: "announcements", label: "Announcements", icon: Bell },
+    { id: "Memories", label: "Memories", icon: Images },
     ...(isSuperAdmin ? [{ id: "manageAccess", label: "Manage Access", icon: Users }] : []),
   ];
 
@@ -103,6 +105,11 @@ const AdminPanel = () => {
         title: "Manage Access",
         description: "Control user permissions and roles",
         content: <AdminAccess />,
+      },
+      Memories:{
+        title: "Upload Photos",
+        discription: "uplaod photos to the gallery",
+        content: <ImageUploader />
       }
     };
     return contentMap[activeTab];

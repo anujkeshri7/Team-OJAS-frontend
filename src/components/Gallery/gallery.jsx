@@ -1,118 +1,81 @@
-import React from "react";
+import React ,{useEffect} from "react";
+import axios from "axios";
+import { set } from "react-hook-form";
+import Card from "./Card";
 
-const data = [
-  {
-    title: "Mountain View",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-  },
-  {
-    title: "City Night",
-    image: "https://images.unsplash.com/photo-1494526585095-c41746248156"
-  },
-  {
-    title: "Beach Sunset",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-  },
-  {
-    title: "Forest Path",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-  },
-   {
-    title: "Mountain View",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-  },
-  {
-    title: "City Night",
-    image: "https://images.unsplash.com/photo-1494526585095-c41746248156"
-  },
-  {
-    title: "Beach Sunset",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-  },
-  {
-    title: "Forest Path",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-  },
-   {
-    title: "Mountain View",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-  },
-  {
-    title: "City Night",
-    image: "https://images.unsplash.com/photo-1494526585095-c41746248156"
-  },
-  {
-    title: "Beach Sunset",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-  },
-  {
-    title: "Forest Path",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-  },
-   {
-    title: "Mountain View",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-  },
-  {
-    title: "City Night",
-    image: "https://images.unsplash.com/photo-1494526585095-c41746248156"
-  },
-  {
-    title: "Beach Sunset",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-  },
-  {
-    title: "Forest Path",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-  }
-];
+const GalleryViewer = ({ isAdminView = false , refresh , setRefresh}) => {
 
-export default function Gallery() {
+ const [galleries, setGalleries] = React.useState([]);
+
+ console.log(galleries)
+
+
+  useEffect(()=>{
+
+    const fetchGalleries = async () => {
+      try {
+        
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/gallery`);
+        console.log("Fetched galleries:", res.data);
+        if(res.data.success){
+          setGalleries(res.data.data);
+        } else {
+          setGalleries([]);
+        }
+
+
+      } catch (error) {
+        console.error("Error fetching galleries:", error);
+        setGalleries([]);
+        
+      }
+    }
+
+    fetchGalleries();
+
+
+  },[refresh])
+
   return (
-    <div style={styles.grid}>
-      {data.map((item, i) => (
-        <div key={i} style={styles.card}>
-          <div style={styles.imageWrapper}>
-            <img src={item.image} alt={item.title} style={styles.image} />
+    <div className="max-w-7xl mx-auto p-6 bg-gray-900 text-white">
+
+      <h1 className="text-4xl font-bold mb-10 text-center">
+        Club Gallery
+      </h1>
+
+      {galleries.map((gallery, index) => (
+
+        <div key={index} className="mb-12">
+
+          {/* Title */}
+          <h2 className="text-2xl font-semibold mb-5 border-l-4 border-blue-500 pl-3">
+            {gallery.title}
+          </h2>
+
+          {/* Image Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+
+            {gallery.images.map((img, i) => (
+
+              <Card
+              i={i}
+              img={img}
+              isAdminView={isAdminView}
+                key={img.publicId}
+                setRefresh={setRefresh}
+              
+              />
+
+            ))}
+
           </div>
 
-          <div style={styles.title}>{item.title}</div>
         </div>
+
       ))}
+
     </div>
   );
-}
-
-const styles = {
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(220px,1fr))",
-    gap: "16px",
-    padding: "20px"
-  },
-
-  card: {
-    borderRadius: "12px",
-    overflow: "hidden",
-    background: "#fff",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
-  },
-
-  imageWrapper: {
-    aspectRatio: "3 / 4", // fixed layout
-    width: "100%",
-    overflow: "hidden"
-  },
-
-  image: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover"
-  },
-
-  title: {
-    padding: "10px",
-    fontWeight: "600",
-    textAlign: "center"
-  }
 };
+
+export default GalleryViewer;
