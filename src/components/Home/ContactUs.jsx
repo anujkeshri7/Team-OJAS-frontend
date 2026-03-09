@@ -97,7 +97,7 @@ export default function ContactUs() {
 
               <div className="bg-[#111827] border border-cyan-500/20 p-6 rounded-2xl ">
                 <p className="text-white font-semibold mb-1">Email</p>
-                <p className="text-cyan-400">teamojas@nit.ac.in</p>
+                <p className="text-cyan-400">ojas.nimbus@nith.ac.in</p>
               </div>
 
               <div className="bg-[#111827] border md:border-blue-500/20 p-6 rounded-2xl ">
