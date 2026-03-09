@@ -63,7 +63,6 @@ const AdminPanel = () => {
     { id: "members", label: "Members", icon: Users },
     { id: "events", label: "Events", icon: Calendar },
     { id: "projects", label: "Projects", icon: Briefcase },
-    { id: "gallery", label: "Gallery", icon: Images },
     { id: "announcements", label: "Announcements", icon: Bell },
     { id: "Memories", label: "Memories", icon: Images },
     ...(isSuperAdmin ? [{ id: "manageAccess", label: "Manage Access", icon: Users }] : []),

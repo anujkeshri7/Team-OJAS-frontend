@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import GalleryViewer from "../../Gallery/gallery";
 
+const MAX_TOTAL_SIZE = 10 * 1024 * 1024; // 10MB
+
 const ImageUploader = () => {
 
   const [folderName, setFolderName] = useState("");
@@ -16,7 +18,6 @@ const ImageUploader = () => {
     const files = Array.from(e.target.files);
 
     if (images.length + files.length > 20) {
-      alert("Maximum 20 images allowed");
       return;
     }
 
@@ -33,6 +34,9 @@ const ImageUploader = () => {
   const removeImage = (id) => {
     setImages((prev) => prev.filter((img) => img.id !== id));
   };
+
+  const totalSize = images.reduce((total, img) => total + img.file.size, 0);
+  const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
 
   const handleSubmitUpload = async () => {
 
@@ -106,7 +110,6 @@ const ImageUploader = () => {
 
         </div>
 
-
         {/* Folder Name */}
         <div className="mb-6">
 
@@ -123,11 +126,10 @@ const ImageUploader = () => {
           />
 
           <p className="text-xs text-gray-400 mt-2">
-            To upload to an existing folder, type the exact same folder name.
+            The folder name will be used as the gallery title. To upload images to an existing folder, enter the exact same folder name shown below.
           </p>
 
         </div>
-
 
         {/* Upload Area */}
         <div
@@ -154,44 +156,63 @@ const ImageUploader = () => {
 
         </div>
 
-
         {/* Image Count */}
         {images.length > 0 && (
-          <p className="text-sm text-gray-400 mt-4">
-            {images.length} / 20 images selected
-          </p>
-        )}
+          <>
+            <p className="text-sm text-gray-400 mt-4">
+              {images.length} / 20 images selected
+            </p>
 
+            <p className="text-sm text-gray-400">
+              Total size: {totalSizeMB} MB / 10 MB
+            </p>
+
+            {totalSize > MAX_TOTAL_SIZE && (
+              <p className="text-red-400 text-sm mt-1">
+                Please remove some images. Total size must be under 10MB.
+              </p>
+            )}
+          </>
+        )}
 
         {/* Preview Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-5">
 
-          {images.map((img) => (
+          {images.map((img) => {
 
-            <div
-              key={img.id}
-              className="relative group rounded-xl overflow-hidden shadow-md"
-            >
+            const sizeMB = (img.file.size / (1024 * 1024)).toFixed(2);
 
-              <img
-                src={img.url}
-                alt="preview"
-                className="w-full h-40 object-cover group-hover:scale-110 transition duration-300"
-              />
-
-              <button
-                onClick={() => removeImage(img.id)}
-                className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md opacity-0 group-hover:opacity-100 transition"
+            return (
+              <div
+                key={img.id}
+                className="relative group rounded-xl overflow-hidden shadow-md"
               >
-                ✕
-              </button>
 
-            </div>
+                <img
+                  src={img.url}
+                  alt="preview"
+                  className="w-full h-40 object-cover"
+                />
 
-          ))}
+                {/* size badge */}
+                <div className="absolute bottom-2 left-2 bg-black/70 text-xs px-2 py-1 rounded">
+                  {sizeMB} MB
+                </div>
+
+                {/* remove button */}
+                <button
+                  onClick={() => removeImage(img.id)}
+                  className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md opacity-0 group-hover:opacity-100 transition"
+                >
+                  ✕
+                </button>
+
+              </div>
+            );
+
+          })}
 
         </div>
-
 
         {/* Upload Button */}
         <div className="flex justify-center mt-8">
@@ -201,7 +222,8 @@ const ImageUploader = () => {
             disabled={
               images.length === 0 ||
               folderName.trim() === "" ||
-              uploading
+              uploading ||
+              totalSize > MAX_TOTAL_SIZE
             }
             className="px-10 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 rounded-xl font-semibold shadow-lg transition"
           >
@@ -209,7 +231,6 @@ const ImageUploader = () => {
           </button>
 
         </div>
-
 
         {images.length === 0 && (
           <p className="text-center text-gray-500 mt-6 text-sm">
@@ -219,8 +240,6 @@ const ImageUploader = () => {
 
       </div>
 
-
-      {/* Gallery Viewer */}
       <GalleryViewer
         isAdminView={true}
         refresh={refresh}
