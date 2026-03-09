@@ -33,9 +33,14 @@ export default function Login() {
         { withCredentials: true }
       );
 
-      if (res.data.success) {
+ 
+      if (res.data.success && (res.data.user.role === "Admin" || res.data.user.role === "SuperAdmin")) {
         navigate("/admin");
-      } else {
+      }
+      else if(res.data.success){
+        navigate("/");
+      }
+      else {
         setError(res.data.message || "Invalid email or password.");
       }
 

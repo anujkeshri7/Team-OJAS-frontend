@@ -1,12 +1,18 @@
 // components/Header.jsx
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import logo from "../../assets/logo.png"
 
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  const [refresh, setRefresh] = useState(false); // to trigger re-render after login/logout
+  const triggerRefresh = () => setRefresh((prev) => !prev);
+
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const menuItems = [
     {
@@ -34,10 +40,44 @@ export default function Header() {
       link: "/contact"
     },
     { name: "Sign In",
-      link: "/login"
+      link: "/login",
+      auth: false
+    },
+    { name: "Admin Panel",
+      link: "/admin",
+      auth: "admin"
     },
 
   ];
+
+
+const [isAuth, setIsAuth] = useState(null); // null = loading
+  
+    useEffect(() => {
+      const checkAuth = async () => {
+        try {
+          const res = await axios.get(
+            `${import.meta.env.VITE_BACKEND_URL}/api/check-auth`,
+            { withCredentials: true }
+          );
+
+          if(res.data.user.role === "Admin" || res.data.user.role === "SuperAdmin"){
+            setIsAdmin(true);
+          }
+  
+          if (res.data.user) {
+            setIsAuth(true);
+          } else {
+            setIsAuth(false);
+          }
+        } catch (error) {
+          console.error("Error checking authentication:", error);
+          setIsAuth(false);
+        }
+      };
+  
+      checkAuth();
+    }, [refresh]);
 
   return (
     <header className="sticky top-0 z-50 bg-[#0B0F1A] md:md:border-b border-cyan-500/20">
@@ -62,15 +102,21 @@ export default function Header() {
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-8 text-gray-300">
           {menuItems.map(
-            (item) => (
-              <Link
-                key={item.name}
-                to={item.link}
-                className="hover:text-cyan-400 transition"
-              >
-                {item.name}
-              </Link>
-            )
+            (item) => {
+              if(item.auth === true && !isAuth) return null; // auth required but user not authenticated
+              if(item.auth === false && isAuth) return null; // no auth but user is authenticated
+              if(item.auth === "admin" && !isAdmin) return null; // admin auth required but user is not admin
+
+              return (
+                <Link
+                  key={item.name}
+                  to={item.link}
+                  className="hover:text-cyan-400 transition"
+                >
+                  {item.name}
+                </Link>
+              );
+            }
           )}
         </nav>
 
@@ -88,8 +134,13 @@ export default function Header() {
         <div className="md:hidden bg-[#0B0F1A] md:md:border-t border-cyan-500/20">
           <nav className="flex flex-col px-6 py-4 gap-4 text-gray-300">
             {menuItems.map(
-              (item) => (
-                <Link
+              (item) => {
+                 if(item.auth === true && !isAuth) return null; // auth required but user not authenticated
+               if(item.auth === false && isAuth) return null; // no auth but user is authenticated
+              if(item.auth === "admin" && !isAdmin) return null; // admin auth required but user is not admin
+
+                return(
+                  <Link
                   key={item.name}
                   to={item.link}
                   className="hover:text-cyan-400 transition"
@@ -97,7 +148,9 @@ export default function Header() {
                 >
                   {item.name}
                 </Link>
-              )
+                )
+
+              }
             )}
           </nav>
         </div>

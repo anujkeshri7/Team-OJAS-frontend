@@ -11,8 +11,8 @@ function Card({ img, isAdminView = false , setRefresh }) {
     try {
       setDeleting(true);
 
-      console.log(img);
-      console.log(`${import.meta.env.VITE_BACKEND_URL}/api/delete-gallery-image/${img.publicId}`)
+  
+     
 
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/delete-gallery-image`,
@@ -23,7 +23,6 @@ function Card({ img, isAdminView = false , setRefresh }) {
       );
 
       if (res.data.success) {
-        alert("Image deleted successfully!");
         setRefresh(prev => !prev);
       } else {
         alert(res.data.message || "Error deleting image.");
@@ -60,16 +59,19 @@ function Card({ img, isAdminView = false , setRefresh }) {
       {/* Delete Button */}
       {isAdminView && (
         <button
-          onClick={() => onDelete(img)}
-          disabled={deleting}
-          className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
-        >
-          {deleting ? (
-            <Loader2 size={16} className="animate-spin" />
-          ) : (
-            <Trash2 size={16} />
-          )}
-        </button>
+ onClick={(e) => {
+    e.stopPropagation();
+    onDelete(img);
+  }}
+  disabled={deleting}
+  className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition flex items-center justify-center"
+>
+  {deleting ? (
+    <Loader2 size={16} className="animate-spin" />
+  ) : (
+    <Trash2 size={16} />
+  )}
+</button>
       )}
 
     </div>
