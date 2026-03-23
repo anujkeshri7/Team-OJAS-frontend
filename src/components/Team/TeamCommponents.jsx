@@ -21,7 +21,7 @@ const SECTION_ORDER = [
   "Faculty In-Charge",
   "Final Year",
   "Club Coordinator",
-  "Coordiantor",
+  "Coordinator",
   "Executive",
   "Volunteer",
 ];
