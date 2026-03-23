@@ -9,7 +9,7 @@ const positionToSection = {
   "Faculty In-Charge": "Faculty In-Charge",
   "Final Year": "Final Year",
   "Club Coordinator": "Club Coordinator",
-  "Coordiantor": "Coordiantor",
+  "Coordinator": "Coordinator",
   "Executive Member":"Executive",
   "Volunteer": "Volunteer",
 };
@@ -21,7 +21,7 @@ const SECTION_ORDER = [
   "Faculty In-Charge",
   "Final Year",
   "Club Coordinator",
-  "Coordiantor",
+  "Coordinator",
   "Executive",
   "Volunteer",
 ];
