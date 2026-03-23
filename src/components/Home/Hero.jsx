@@ -112,7 +112,10 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative mt-0.7  pt-10 flex flex-col items-center justify-center overflow-hidden
+      className="relative min-h-screen  flex 
+      mt-0.7  pt-12  sm:pt-16 md:pt-20  lg:pt-24 
+      mb-0.7  pb-12  sm:pb-16  md:pb-20 lg:pb-24 
+      flex-col items-center space-between overflow-hidden
                  bg-[#040d1d] "
       onMouseEnter={() => isPointer && setHovered(true)}
       onMouseLeave={() => isPointer && setHovered(false)}
@@ -249,7 +252,7 @@ export default function Hero() {
       >
 
         {/* Badge */}
-        <motion.div variants={fadeUp} className="mb-6 sm:mb-8">
+        <motion.div variants={fadeUp} className="mb-8.5 sm:mb-9.5">
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2
                           rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
             <Zap size={13} className="text-cyan-400 shrink-0" />
