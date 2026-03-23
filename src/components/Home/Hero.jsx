@@ -112,8 +112,8 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden
-                 bg-[#040d1d] m-0 p-0"
+      className="relative mt-0.7  pt-10 flex flex-col items-center justify-center overflow-hidden
+                 bg-[#040d1d] "
       onMouseEnter={() => isPointer && setHovered(true)}
       onMouseLeave={() => isPointer && setHovered(false)}
     >
