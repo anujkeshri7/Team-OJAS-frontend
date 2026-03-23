@@ -9,7 +9,7 @@ const positionToSection = {
   "Faculty In-Charge": "Faculty In-Charge",
   "Final Year": "Final Year",
   "Club Coordinator": "Club Coordinator",
-  "Coordiantor": "Coordiantor",
+  "Coordiantor": "Coordinator",
   "Executive Member":"Executive",
   "Volunteer": "Volunteer",
 };
