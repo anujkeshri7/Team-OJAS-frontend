@@ -112,10 +112,10 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen  flex 
+      className="relative h-full  flex 
       mt-0.7  pt-12  sm:pt-16 md:pt-20  lg:pt-24 
-      mb-0.7  pb-12  sm:pb-16  md:pb-20 lg:pb-24 
-      flex-col items-center space-between overflow-hidden
+      mb-0.7 pb-12 sm:pb-16 md:pb-20 lg:pb-24
+      flex-col items-center space-between justify-center overflow-hidden
                  bg-[#040d1d] "
       onMouseEnter={() => isPointer && setHovered(true)}
       onMouseLeave={() => isPointer && setHovered(false)}
@@ -245,7 +245,7 @@ export default function Hero() {
         className="relative z-10 w-full max-w-4xl mx-auto
                    px-4 sm:px-8 md:px-12
                    text-center
-                   pt-0 pb-0 sm:pt-0 sm:pb-0"
+                  "
         variants={container}
         initial="hidden"
         animate="show"
