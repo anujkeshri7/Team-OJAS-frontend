@@ -39,14 +39,7 @@ export default function Header() {
       name: "Contact",
       link: "/contact"
     },
-    { name: "Sign In",
-      link: "/login",
-      auth: false
-    },
-    { name: "Admin Panel",
-      link: "/admin",
-      auth: "admin"
-    },
+   
 
   ];
 
